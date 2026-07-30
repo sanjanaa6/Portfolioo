@@ -144,94 +144,10 @@ Build for production
 npm run build
 ```
 
----
+## Highlights
 
-# 📸 Preview
-
-### Home Page
-
-> Add a screenshot here
-
----
-
-### Projects Section
-
-> Add a screenshot here
-
----
-
-### Contact Section
-
-> Add a screenshot here
-
----
-
-# 🎨 Design Inspiration
-
-This portfolio takes inspiration from
-
-- Apple
-- OpenAI
-- Vercel
-- Stripe
-- Linear
-- Awwwards
-
-The design focuses on clean typography, smooth animations, premium interactions, and a futuristic AI aesthetic.
-
----
-
-# 📌 Roadmap
-
-- [x] Responsive Layout
-- [x] Modern UI
-- [x] Animated Hero Section
-- [x] Smooth Scroll Animations
-- [x] Project Showcase
-- [ ] AI Chatbot
-- [ ] Blog Section
-- [ ] Visitor Analytics
-- [ ] Interactive 3D Experience
-
----
-
-# 📈 Performance Goals
-
-- Lighthouse Score 95+
-- Mobile Responsive
-- SEO Optimized
-- Accessibility Friendly
-- Fast Loading
-- Lazy Loading Components
-
----
-
-# 🤝 Connect With Me
-
-**GitHub**
-
-https://github.com/sanjanaa6
-
-**LinkedIn**
-
-(Add your LinkedIn)
-
-**Email**
-
-(Add your Email)
-
----
-
-# 📜 License
-
-This project is licensed under the MIT License.
-
----
-
-<div align="center">
-
-### ⭐ If you like this project, don't forget to give it a star!
-
-Made with ❤️ by **Sanjana**
-
-</div>
+- Futuristic black/orange visual system
+- Animated hero and 3D AI-inspired object
+- Premium glass navigation and section transitions
+- Responsive portfolio sections for all devices
+- Modular React components and clean TypeScript structure
