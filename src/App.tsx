@@ -150,8 +150,8 @@ export default function App() {
       ) : null}
 
       <motion.div style={{ scaleY: progress, transformOrigin: 'top' }} className="fixed left-0 top-0 z-[60] h-1 w-full origin-top bg-[#FF6B00]" />
-      <header className="fixed top-4 z-50 mx-auto flex w-full justify-center px-4 sm:px-6">
-        <nav className="glass flex items-center gap-2 rounded-full px-3 py-2 shadow-glow">
+      <header className="fixed top-4 z-[9999] mx-auto flex w-full justify-center px-4 sm:px-6">
+        <nav className="glass relative z-[9999] flex items-center gap-2 rounded-full px-3 py-2 shadow-glow">
           {navItems.map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} className={`rounded-full px-3 py-2 text-sm transition ${activeSection.toLowerCase() === item.toLowerCase() ? 'bg-[#FF6B00] text-white' : 'text-[#B7B7B7] hover:bg-white/10 hover:text-white'}`}>
               {item}
