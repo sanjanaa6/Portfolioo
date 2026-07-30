@@ -48,6 +48,12 @@ const projects = [
   }
 ]
 
+const heroStats = [
+  { value: '130+', label: 'ML models delivered' },
+  { value: '24/7', label: 'Reliable deployment uptime' },
+  { value: '10x', label: 'AI productivity uplift' }
+]
+
 const experiences = [
   { role: 'AI Engineer', company: 'OpenAI Ecosystem Studio', period: '2024 - Present', description: 'Shipping LLM copilots and inference pipelines for strategic AI products.' },
   { role: 'ML Research Engineer', company: 'NVIDIA', period: '2022 - 2024', description: 'Built deep learning training systems and applied computer vision production solutions.' },
@@ -73,12 +79,24 @@ function FloatingOrb({ className }: { className: string }) {
 function HeroScene() {
   return (
     <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-      <ambientLight intensity={0.8} />
+      <ambientLight intensity={0.9} />
       <directionalLight position={[3, 3, 3]} intensity={1.2} color="#ff7a1a" />
       <Float speed={2.2} rotationIntensity={0.4} floatIntensity={0.9}>
         <mesh>
           <icosahedronGeometry args={[1.25, 1]} />
           <meshStandardMaterial color="#FF6B00" emissive="#FF6B00" emissiveIntensity={0.85} wireframe />
+        </mesh>
+      </Float>
+      <Float speed={1.5} rotationIntensity={0.5} floatIntensity={1.2} position={[2.2, 1.1, -0.8]}>
+        <mesh>
+          <sphereGeometry args={[0.18, 32, 32]} />
+          <meshStandardMaterial color="#FF8C3A" emissive="#FF8C3A" emissiveIntensity={0.75} />
+        </mesh>
+      </Float>
+      <Float speed={1.2} rotationIntensity={0.7} floatIntensity={0.8} position={[-2, -0.9, 0.5]}>
+        <mesh>
+          <torusGeometry args={[0.38, 0.05, 16, 100]} />
+          <meshStandardMaterial color="#FF9B3A" emissive="#FF9B3A" emissiveIntensity={0.65} />
         </mesh>
       </Float>
       <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={2.2} />
@@ -187,13 +205,28 @@ export default function App() {
                   </motion.a>
                 ))}
               </div>
+              <div className="mt-10 grid gap-3 sm:grid-cols-3">
+                {heroStats.map((stat) => (
+                  <motion.div key={stat.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} whileHover={{ y: -4 }} className="glass rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-center">
+                    <p className="text-3xl font-semibold text-white">{stat.value}</p>
+                    <p className="mt-2 text-sm text-[#B7B7B7]">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
               <div className="mt-12 flex items-center gap-4 text-sm text-[#B7B7B7]">
                 <div className="h-px w-16 bg-[#FF6B00]" />
                 <span>Scroll to explore the full experience</span>
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.1 }} className="relative h-[500px] rounded-[2rem] border border-white/10 bg-[#111111]/70 p-6 shadow-glow">
+            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.1 }} whileHover={{ scale: 1.02 }} className="relative h-[500px] rounded-[2rem] border border-white/10 bg-[#111111]/70 p-6 shadow-glow">
               <div className="absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle,_rgba(255,107,0,0.16),_transparent_55%)]" />
+              <div className="absolute left-6 top-6 z-20 rounded-3xl border border-white/10 bg-[#111111]/80 p-4 text-sm text-[#E7E7E7] shadow-[0_25px_80px_rgba(255,107,0,0.18)]">
+                <p className="text-[#FF6B00] uppercase tracking-[0.35em]">Live AI Build</p>
+                <p className="mt-2 text-sm leading-6 text-[#B7B7B7]">Realtime model orchestration, deploy-ready pipelines, and visual signal flow.</p>
+              </div>
+              <div className="absolute right-6 bottom-8 z-20 rounded-full border border-[#FF6B00]/20 bg-[#111111]/80 px-4 py-2 text-sm text-[#FFB56B] shadow-[0_18px_65px_rgba(255,107,0,0.18)]">
+                <span className="font-semibold">AI Pulse</span> <span className="text-[#B7B7B7]">• 98% accuracy</span>
+              </div>
               <HeroScene />
             </motion.div>
           </div>
