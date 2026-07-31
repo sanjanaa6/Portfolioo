@@ -258,7 +258,34 @@ export default function App() {
   }, [displayText, isDeleting, wordIndex, heroWords])
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white">
+    <div className="min-h-screen text-white">
+      {/* Animated Background Particles */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-[#FF6B00]/20"
+            style={{
+              width: Math.random() * 300 + 50,
+              height: Math.random() * 300 + 50,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              x: [0, Math.random() * 100 - 50, 0],
+              y: [0, Math.random() * 100 - 50, 0],
+              scale: [1, Math.random() * 0.5 + 0.8, 1],
+              opacity: [0.1, 0.3, 0.1],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          />
+        ))}
+      </div>
+      
       <motion.div style={{ scaleY: progress, transformOrigin: 'top' }} className="fixed left-0 top-0 z-[60] h-1 w-full origin-top bg-[#FF6B00]" />
       <motion.header 
         initial={{ y: -100, opacity: 0 }}
