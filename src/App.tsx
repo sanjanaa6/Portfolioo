@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, useRef } from 'react'
-import { motion, useScroll, useSpring, useTransform, useInView } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, BrainCircuit, Code2, Cpu, Download, Github, Linkedin, Mail, Stars, Zap } from 'lucide-react'
 import { FaDocker } from 'react-icons/fa'
 import { SiTensorflow, SiPytorch, SiFastapi } from 'react-icons/si'
@@ -207,8 +207,6 @@ function SectionTitle({ eyebrow, title, description }: { eyebrow: string; title:
 export default function App() {
   const [activeSection, setActiveSection] = useState('Home')
   const { scrollYProgress } = useScroll()
-  const scaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 20 })
-  const progress = useTransform(scaleY, [0, 1], [0, 100])
   const y1 = useTransform(scrollYProgress, [0, 0.5], [0, -50])
   const y2 = useTransform(scrollYProgress, [0, 0.5], [0, 50])
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
@@ -286,14 +284,13 @@ export default function App() {
         ))}
       </div>
       
-      <motion.div style={{ scaleY: progress, transformOrigin: 'top' }} className="fixed left-0 top-0 z-[60] h-1 w-full origin-top bg-[#FF6B00]" />
       <motion.header 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="fixed top-4 z-[9999] mx-auto flex w-full justify-center px-4 sm:px-6"
       >
-        <nav className="glass relative z-[9999] flex items-center gap-2 rounded-full px-3 py-2 shadow-glow">
+        <nav className="glass relative z-[9999] flex items-center gap-2 rounded-full px-3 py-2">
           {navItems.map((item, index) => (
             <motion.a 
               key={item} 
@@ -303,7 +300,7 @@ export default function App() {
               transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className={`rounded-full px-3 py-2 text-sm transition ${activeSection.toLowerCase() === item.toLowerCase() ? 'bg-[#FF6B00] text-white' : 'text-[#B7B7B7] hover:bg-white/10 hover:text-white'}`}
+              className={`rounded-full px-3 py-2 text-sm transition ${activeSection.toLowerCase() === item.toLowerCase() ? 'text-white font-semibold' : 'text-[#B7B7B7] hover:text-white'}`}
             >
               {item}
             </motion.a>
@@ -554,7 +551,6 @@ export default function App() {
                     <h3 className="mt-2 text-2xl font-semibold text-white">{item.role}</h3>
                     <p className="mt-1 text-[#B7B7B7]">{item.company}</p>
                   </div>
-                  <div className="h-2 w-24 rounded-full bg-white/10"><div className="h-2 w-3/4 rounded-full bg-[#FF6B00]" /></div>
                 </div>
                 <p className="mt-5 max-w-3xl text-[#B7B7B7]">{item.description}</p>
               </motion.div>
