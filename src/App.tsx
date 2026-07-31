@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { useEffect, useMemo, useState, useRef } from 'react'
+import { motion, useScroll, useSpring, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, BrainCircuit, Code2, Cpu, Download, Github, Linkedin, Mail, Stars, Zap } from 'lucide-react'
 import { FaDocker } from 'react-icons/fa'
 import { SiTensorflow, SiPytorch, SiFastapi } from 'react-icons/si'
@@ -58,12 +58,147 @@ const experiences = [
 
 const certificates = ['TensorFlow Developer', 'AWS ML Specialty', 'DeepLearning.AI', 'LangChain Certified']
 
-function SectionTitle({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+function AnimatedOrb({ className, delay = 0 }: { className: string; delay?: number }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} className="mb-12 max-w-2xl">
-      <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#FF6B00]">{eyebrow}</p>
-      <h2 className="text-3xl font-semibold text-white sm:text-4xl">{title}</h2>
-      <p className="mt-4 text-lg text-[#B7B7B7]">{description}</p>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 0.3, scale: 1 }}
+      transition={{ duration: 1.5, delay, ease: 'easeOut' }}
+      className={`orb ${className}`}
+    >
+      <motion.div
+        animate={{
+          x: [0, 30, -30, 0],
+          y: [0, -30, 30, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+        className="w-full h-full"
+      />
+    </motion.div>
+  )
+}
+
+function MagneticButton({ children, className, href }: { children: React.ReactNode; className?: string; href?: string }) {
+  const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+    const { clientX, clientY } = e
+    const { left, top, width, height } = ref.current!.getBoundingClientRect()
+    const x = clientX - left - width / 2
+    const y = clientY - top - height / 2
+    setPosition({ x, y })
+  }
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 })
+  }
+
+  const Component = href ? 'a' : 'button'
+  
+  return (
+    <Component
+      ref={ref as any}
+      href={href}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+      style={{
+        transform: `translate(${position.x * 0.2}px, ${position.y * 0.2}px)`,
+        transition: 'transform 0.3s ease-out',
+      }}
+    >
+      {children}
+    </Component>
+  )
+}
+
+function AnimatedCounter({ value, label }: { value: string; label: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+  const [count, setCount] = useState(0)
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ''))
+  const suffix = value.replace(/[0-9]/g, '')
+
+  useEffect(() => {
+    if (isInView) {
+      let start = 0
+      const end = numericValue
+      const duration = 2000
+      const incrementTime = duration / end
+      
+      const timer = setInterval(() => {
+        start += 1
+        setCount(start)
+        if (start >= end) clearInterval(timer)
+      }, incrementTime)
+      
+      return () => clearInterval(timer)
+    }
+  }, [isInView, numericValue])
+
+  return (
+    <div ref={ref} className="glass rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-center transition-shadow hover:shadow-lg">
+      <motion.p 
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+        transition={{ duration: 0.5 }}
+        className="text-3xl font-semibold text-white"
+      >
+        {count}{suffix}
+      </motion.p>
+      <motion.p 
+        initial={{ opacity: 0, y: 10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mt-2 text-sm text-[#B7B7B7]"
+      >
+        {label}
+      </motion.p>
+    </div>
+  )
+}
+
+function SectionTitle({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.25 })
+  
+  return (
+    <motion.div 
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="mb-12 max-w-2xl"
+    >
+      <motion.p 
+        initial={{ opacity: 0, x: -20 }}
+        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mb-3 text-sm uppercase tracking-[0.3em] text-[#FF6B00]"
+      >
+        {eyebrow}
+      </motion.p>
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-3xl font-semibold text-white sm:text-4xl"
+      >
+        {title}
+      </motion.h2>
+      <motion.p 
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="mt-4 text-lg text-[#B7B7B7]"
+      >
+        {description}
+      </motion.p>
     </motion.div>
   )
 }
@@ -71,13 +206,14 @@ function SectionTitle({ eyebrow, title, description }: { eyebrow: string; title:
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('Home')
-  const [mounted, setMounted] = useState(false)
   const { scrollYProgress } = useScroll()
   const scaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 20 })
   const progress = useTransform(scaleY, [0, 1], [0, 100])
+  const y1 = useTransform(scrollYProgress, [0, 0.5], [0, -50])
+  const y2 = useTransform(scrollYProgress, [0, 0.5], [0, 50])
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
 
   useEffect(() => {
-    setMounted(true)
     const sections = document.querySelectorAll<HTMLElement>('section[id]')
     const observer = new IntersectionObserver(
       (entries) => {
@@ -97,63 +233,142 @@ export default function App() {
 
   const heroWords = useMemo(() => ['Python Developer', 'AI Engineer', 'Machine Learning Enthusiast', 'Deep Learning Engineer', 'TensorFlow Developer', 'PyTorch Developer', 'LLM Developer', 'Prompt Engineer', 'Generative AI Developer'], [])
   const [wordIndex, setWordIndex] = useState(0)
+  const [displayText, setDisplayText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  
   useEffect(() => {
-    const interval = setInterval(() => setWordIndex((prev) => (prev + 1) % heroWords.length), 1800)
-    return () => clearInterval(interval)
-  }, [heroWords.length])
+    const currentWord = heroWords[wordIndex]
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentWord.length) {
+          setDisplayText(currentWord.slice(0, displayText.length + 1))
+        } else {
+          setIsDeleting(true)
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1))
+        } else {
+          setIsDeleting(false)
+          setWordIndex((prev) => (prev + 1) % heroWords.length)
+        }
+      }
+    }, isDeleting ? 50 : 100)
+    return () => clearTimeout(timeout)
+  }, [displayText, isDeleting, wordIndex, heroWords])
 
   return (
     <div className="min-h-screen bg-[#050505] text-white">
       <motion.div style={{ scaleY: progress, transformOrigin: 'top' }} className="fixed left-0 top-0 z-[60] h-1 w-full origin-top bg-[#FF6B00]" />
-      <header className="fixed top-4 z-[9999] mx-auto flex w-full justify-center px-4 sm:px-6">
+      <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="fixed top-4 z-[9999] mx-auto flex w-full justify-center px-4 sm:px-6"
+      >
         <nav className="glass relative z-[9999] flex items-center gap-2 rounded-full px-3 py-2 shadow-glow">
-          {navItems.map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className={`rounded-full px-3 py-2 text-sm transition ${activeSection.toLowerCase() === item.toLowerCase() ? 'bg-[#FF6B00] text-white' : 'text-[#B7B7B7] hover:bg-white/10 hover:text-white'}`}>
+          {navItems.map((item, index) => (
+            <motion.a 
+              key={item} 
+              href={`#${item.toLowerCase()}`} 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.4 + index * 0.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className={`rounded-full px-3 py-2 text-sm transition ${activeSection.toLowerCase() === item.toLowerCase() ? 'bg-[#FF6B00] text-white' : 'text-[#B7B7B7] hover:bg-white/10 hover:text-white'}`}
+            >
               {item}
-            </a>
+            </motion.a>
           ))}
         </nav>
-      </header>
+      </motion.header>
 
       <main>
         <section id="home" className="relative flex min-h-screen items-center overflow-hidden px-6 py-24 sm:px-10 lg:px-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,107,0,0.06),_transparent_50%)]" />
-          <div className="relative z-10 w-full max-w-4xl">
+          <motion.div style={{ y: y1, opacity }} className="absolute inset-0">
+            <AnimatedOrb className="left-[-8rem] top-20 h-56 w-56 bg-[#FF6B00]" delay={0.2} />
+            <AnimatedOrb className="right-[-4rem] top-40 h-40 w-40 bg-[#ff8c3a]" delay={0.4} />
+            <AnimatedOrb className="left-[20%] bottom-20 h-32 w-32 bg-[#FF6B00]/50" delay={0.6} />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,107,0,0.06),_transparent_50%)]" />
+          </motion.div>
+          <motion.div style={{ y: y2 }} className="relative z-10 w-full max-w-4xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
               <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/30 bg-white/5 px-4 py-2 text-sm text-[#FF6B00]">
                 <Zap size={16} /> AI Engineer Portfolio
               </p>
-              <h1 className="text-5xl font-semibold leading-[0.9] sm:text-6xl lg:text-7xl">
-                Hello, I&apos;m <span className="text-[#FF6B00]">Sanjana</span>
-              </h1>
+              <motion.h1 
+                className="text-5xl font-semibold leading-[0.9] sm:text-6xl lg:text-7xl"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Hello, I&apos;m <motion.span 
+                  className="text-[#FF6B00] bg-gradient-to-r from-[#FF6B00] via-[#FF8C3A] to-[#FF6B00] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
+                  animate={{
+                    backgroundPosition: ['0% center', '200% center', '0% center'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: 'linear',
+                  }}
+                >
+                  Sanjana
+                </motion.span>
+              </motion.h1>
               <h2 className="mt-6 text-2xl font-medium text-[#B7B7B7] sm:text-3xl lg:text-4xl">
-                <span className="text-white">{heroWords[wordIndex]}</span>
+                <span className="text-white">{displayText}<span className="animate-pulse">|</span></span>
               </h2>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[#B7B7B7]">
                 I design and ship intelligent systems at the intersection of Python, machine learning, deep learning, LLMs, and generative AI with a strong product mindset.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 {['Resume', 'GitHub', 'LinkedIn', 'Contact'].map((label, index) => (
-                  <a key={label} href={label === 'Contact' ? '#contact' : '#'} className={`inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition ${index === 0 ? 'bg-[#FF6B00] text-white hover:bg-[#FF6B00]/90' : 'border border-white/10 bg-white/5 text-white hover:border-[#FF6B00]/50'}`}>
+                  <MagneticButton key={label} href={label === 'Contact' ? '#contact' : '#'} className={`inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition ${index === 0 ? 'bg-[#FF6B00] text-white hover:bg-[#FF6B00]/90' : 'border border-white/10 bg-white/5 text-white hover:border-[#FF6B00]/50'}`}>
                     {label === 'Resume' ? <Download size={18} /> : label === 'GitHub' ? <Github size={18} /> : label === 'LinkedIn' ? <Linkedin size={18} /> : <Mail size={18} />}
                     {label}
-                  </a>
+                  </MagneticButton>
                 ))}
               </div>
               <div className="mt-10 grid gap-3 sm:grid-cols-3">
                 {heroStats.map((stat) => (
-                  <div key={stat.label} className="glass rounded-[1.5rem] border border-white/10 bg-white/5 p-5 text-center">
-                    <p className="text-3xl font-semibold text-white">{stat.value}</p>
-                    <p className="mt-2 text-sm text-[#B7B7B7]">{stat.label}</p>
-                  </div>
+                  <AnimatedCounter key={stat.label} value={stat.value} label={stat.label} />
                 ))}
               </div>
-              <div className="mt-12 flex items-center gap-4 text-sm text-[#B7B7B7]">
-                <div className="h-px w-16 bg-[#FF6B00]" />
-                <span>Scroll to explore</span>
-              </div>
+              <motion.div 
+                className="mt-12 flex items-center gap-4 text-sm text-[#B7B7B7]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+              >
+                <motion.div 
+                  className="h-px w-16 bg-[#FF6B00]"
+                  animate={{
+                    scaleX: [0, 1, 0],
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                />
+                <motion.span
+                  animate={{
+                    opacity: [0.5, 1, 0.5],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
+                  Scroll to explore
+                </motion.span>
+              </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         <section id="about" className="px-6 py-24 sm:px-10 lg:px-20">
@@ -180,11 +395,42 @@ export default function App() {
           <SectionTitle eyebrow="Skills" title="Systems built for modern AI products" description="A focused toolkit for engineering, experimentation, deployment, and elegant user experiences." />
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {skills.map((skill, index) => (
-              <motion.article key={skill.title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} whileHover={{ y: -4 }} transition={{ delay: index * 0.04 }} className="glass rounded-[1.6rem] p-7 transition-shadow hover:shadow-lg">
-                <div className="mb-5 flex items-center gap-3 text-[#FF6B00]">{skill.icon}<h3 className="text-xl font-semibold text-white">{skill.title}</h3></div>
-                <ul className="space-y-2 text-sm text-[#B7B7B7]">
-                  {skill.items.map((item) => <li key={item}>• {item}</li>)}
-                </ul>
+              <motion.article 
+                key={skill.title} 
+                initial={{ opacity: 0, y: 24 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true, amount: 0.2 }} 
+                whileHover={{ y: -8, scale: 1.02 }} 
+                transition={{ delay: index * 0.04 }} 
+                className="glass rounded-[1.6rem] p-7 transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6B00]/10 group relative overflow-hidden"
+              >
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/5 to-transparent opacity-0 transition-opacity duration-300"
+                />
+                <div className="relative z-10">
+                  <motion.div 
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-5 flex items-center gap-3 text-[#FF6B00]"
+                  >
+                    {skill.icon}<h3 className="text-xl font-semibold text-white">{skill.title}</h3>
+                  </motion.div>
+                  <ul className="space-y-2 text-sm text-[#B7B7B7]">
+                    {skill.items.map((item, i) => (
+                      <motion.li 
+                        key={item} 
+                        initial={{ opacity: 0, x: -10 }}
+                        whileHover={{ x: 5, color: '#FF6B00' }}
+                        transition={{ delay: i * 0.05 }}
+                        className="transition-colors"
+                      >
+                        • {item}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
               </motion.article>
             ))}
           </div>
@@ -194,24 +440,75 @@ export default function App() {
           <SectionTitle eyebrow="Projects" title="Selected work that stands out" description="A mix of research-backed systems, product-grade tooling, and polished AI applications." />
           <div className="grid gap-6 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <motion.article key={project.title} initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} whileHover={{ y: -4 }} transition={{ delay: index * 0.07 }} className="glass overflow-hidden rounded-[1.8rem] transition-shadow hover:shadow-lg">
-                <div className="h-44 bg-[radial-gradient(circle_at_top_left,_rgba(255,107,0,0.2),_transparent_60%)] p-6">
-                  <div className="flex h-full items-end justify-between rounded-[1.2rem] border border-white/10 bg-[#111111]/70 p-4">
+              <motion.article 
+                key={project.title} 
+                initial={{ opacity: 0, y: 32 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true, amount: 0.2 }} 
+                whileHover={{ y: -12, scale: 1.02 }} 
+                transition={{ delay: index * 0.07 }} 
+                className="glass overflow-hidden rounded-[1.8rem] transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6B00]/15 group"
+              >
+                <motion.div 
+                  className="h-44 bg-[radial-gradient(circle_at_top_left,_rgba(255,107,0,0.2),_transparent_60%)] p-6 relative overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <div className="relative z-10 flex h-full items-end justify-between rounded-[1.2rem] border border-white/10 bg-[#111111]/70 p-4">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.3em] text-[#FF6B00]">{project.category}</p>
+                      <motion.p 
+                        initial={{ y: 0 }}
+                        whileHover={{ y: -2 }}
+                        className="text-sm uppercase tracking-[0.3em] text-[#FF6B00]"
+                      >
+                        {project.category}
+                      </motion.p>
                       <h3 className="mt-2 text-2xl font-semibold text-white">{project.title}</h3>
                     </div>
-                    <Stars className="text-[#FF6B00]" />
+                    <motion.div
+                      whileHover={{ rotate: 180, scale: 1.2 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Stars className="text-[#FF6B00]" />
+                    </motion.div>
                   </div>
-                </div>
+                </motion.div>
                 <div className="p-6">
                   <p className="text-[#B7B7B7]">{project.description}</p>
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {project.stack.map((tag) => <span key={tag} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-[#E7E7E7]">{tag}</span>)}
+                    {project.stack.map((tag, i) => (
+                      <motion.span 
+                        key={tag} 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,107,0,0.2)', borderColor: '#FF6B00' }}
+                        transition={{ delay: i * 0.05 }}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-[#E7E7E7] transition-all"
+                      >
+                        {tag}
+                      </motion.span>
+                    ))}
                   </div>
                   <div className="mt-6 flex gap-3">
-                    <a href={project.github} className="rounded-full border border-white/10 px-4 py-2 text-sm hover:border-[#FF6B00]/70">GitHub</a>
-                    <a href={project.demo} className="rounded-full bg-[#FF6B00] px-4 py-2 text-sm text-white hover:bg-[#FF6B00]/90">Live Demo</a>
+                    <motion.a 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={project.github} 
+                      className="rounded-full border border-white/10 px-4 py-2 text-sm hover:border-[#FF6B00]/70 transition-all"
+                    >
+                      GitHub
+                    </motion.a>
+                    <motion.a 
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      href={project.demo} 
+                      className="rounded-full bg-[#FF6B00] px-4 py-2 text-sm text-white hover:bg-[#FF6B00]/90 transition-all"
+                    >
+                      Live Demo
+                    </motion.a>
                   </div>
                 </div>
               </motion.article>
@@ -242,8 +539,26 @@ export default function App() {
           <SectionTitle eyebrow="Certificates" title="Recognized credentials and continued learning" description="A curated portfolio of certifications that reinforce my engineering depth and product understanding." />
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {certificates.map((certificate, index) => (
-              <motion.div key={certificate} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} whileHover={{ y: -2 }} transition={{ delay: index * 0.05 }} className="glass flex min-h-48 items-center justify-center rounded-[1.6rem] border border-[#FF6B00]/20 p-8 text-center text-xl font-semibold text-white transition-shadow hover:shadow-lg">
-                {certificate}
+              <motion.div 
+                key={certificate} 
+                initial={{ opacity: 0, y: 24 }} 
+                whileInView={{ opacity: 1, y: 0 }} 
+                viewport={{ once: true, amount: 0.2 }} 
+                whileHover={{ y: -8, scale: 1.05, borderColor: '#FF6B00' }} 
+                transition={{ delay: index * 0.05 }} 
+                className="glass flex min-h-48 items-center justify-center rounded-[1.6rem] border border-[#FF6B00]/20 p-8 text-center text-xl font-semibold text-white transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6B00]/20 relative overflow-hidden group"
+              >
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileHover={{ opacity: 1, scale: 1 }}
+                  className="absolute inset-0 bg-gradient-to-br from-[#FF6B00]/10 to-transparent"
+                />
+                <motion.span 
+                  whileHover={{ scale: 1.1, textShadow: '0 0 20px rgba(255,107,0,0.5)' }}
+                  className="relative z-10 transition-all"
+                >
+                  {certificate}
+                </motion.span>
               </motion.div>
             ))}
           </div>

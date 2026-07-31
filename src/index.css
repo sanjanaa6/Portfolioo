@@ -44,3 +44,16 @@ body {
   opacity: 0.22;
   pointer-events: none;
 }
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 200% center;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s linear infinite;
+}
