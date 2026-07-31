@@ -2,26 +2,25 @@ import { useEffect, useMemo, useState, useRef } from 'react'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, BrainCircuit, Code2, Cpu, Download, Github, Linkedin, Mail, Stars, Zap } from 'lucide-react'
 import { FaDocker } from 'react-icons/fa'
-import { SiTensorflow, SiPytorch, SiFastapi } from 'react-icons/si'
 
-const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Certificates', 'Resume', 'Contact']
+const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Education', 'Certificates', 'Resume', 'Contact']
 
 const skills = [
-  { title: 'Programming', icon: <Code2 size={24} />, items: ['Python', 'JavaScript', 'Java', 'PHP', 'SQL'] },
+  { title: 'Programming Languages', icon: <Code2 size={24} />, items: ['Python', 'JavaScript', 'Java', 'PHP', 'SQL'] },
   { title: 'Web Development', icon: <Code2 size={24} />, items: ['HTML', 'CSS', 'Node.js', 'React.js', 'MERN Stack'] },
-  { title: 'Machine Learning', icon: <Cpu size={24} />, items: ['Scikit-learn', 'ML', 'Hugging Face', 'OpenRouter'] },
-  { title: 'AI & LLMs', icon: <BrainCircuit size={24} />, items: ['LangChain', 'FastAPI', 'Prompting', 'RAG'] },
-  { title: 'Databases', icon: <Cpu size={24} />, items: ['MySQL', 'MongoDB', 'PostgreSQL'] },
-  { title: 'Tools', icon: <FaDocker size={24} />, items: ['GitHub', 'Docker', 'Jupyter', 'Google Colab', 'VS Code'] },
   { title: 'CS Fundamentals', icon: <Code2 size={24} />, items: ['Data Structures', 'Algorithms', 'OOP', 'System Design'] },
-  { title: 'Development', icon: <Cpu size={24} />, items: ['Backend APIs', 'Debugging', 'API Development'] }
+  { title: 'Database', icon: <Cpu size={24} />, items: ['MySQL', 'MongoDB', 'PostgreSQL'] },
+  { title: 'Tools & Collaboration', icon: <FaDocker size={24} />, items: ['GitHub', 'Docker', 'Jupyter Notebook', 'Google Colab', 'PyCharm', 'VS Code'] },
+  { title: 'Development Practices', icon: <BrainCircuit size={24} />, items: ['LangChain', 'FastAPI', 'ML', 'Scikit-learn', 'Hugging Face', 'OpenRouter'] },
+  { title: 'Software Development', icon: <Cpu size={24} />, items: ['Backend Development', 'API Development', 'Debugging'] },
+  { title: 'Soft Skills', icon: <Code2 size={24} />, items: ['Technical Communication', 'Data-driven Decision Making', 'Project Ownership', 'Async Collaboration'] }
 ]
 
 const projects = [
   {
     title: 'AI Hiring Assistant',
     category: 'AI Platform',
-    description: 'AI-powered hiring platform for resume screening and candidate evaluation with FastAPI backend and OpenAI integration.',
+    description: 'Built an AI-powered hiring platform for resume screening and candidate evaluation. Developed FastAPI backend APIs and integrated OpenAI models to match candidate skills with job requirements. Designed a responsive React.js interface with secure authentication and candidate management features.',
     stack: ['MERN Stack', 'FastAPI', 'OpenAI API', 'React.js'],
     github: 'https://github.com/sanjanaa6',
     demo: 'https://aihiring.eval8.ai/'
@@ -29,7 +28,7 @@ const projects = [
   {
     title: 'Bank Note Authentication',
     category: 'Machine Learning',
-    description: 'Machine learning model to classify genuine vs counterfeit banknotes with real-time prediction pipeline.',
+    description: 'Engineered a machine learning model to classify genuine vs counterfeit banknotes. Applied data preprocessing, feature engineering, and model training using Python and Scikit-learn. Implemented a real-time prediction pipeline for banknote authentication.',
     stack: ['Python', 'Scikit-learn', 'Machine Learning'],
     github: 'https://github.com/sanjanaa6/Bank_note_classify',
     demo: '#'
@@ -37,16 +36,29 @@ const projects = [
 ]
 
 const heroStats = [
-  { value: '5+', label: 'AI/ML Projects' },
-  { value: '3+', label: 'Certifications' },
-  { value: 'MCA', label: 'GenAI Specialization' }
+  { value: '2+', label: 'Major Projects' },
+  { value: '5+', label: 'Certifications' },
+  { value: 'MCA', label: 'GenAI Student' }
 ]
 
 const experiences = [
-  { role: 'Software Development - AI Intern', company: 'Hysteresis', period: '2025 - Present', description: 'Developing web application features using modern frameworks, collaborating with team members to build, test, and debug software modules. Working with databases and APIs to design backend logic for scalable applications.' }
+  { role: 'Software Development - AI Intern', company: 'Hysteresis', period: 'Current', description: 'Developed web application features using modern frameworks and best coding practices, improving functionality and scalability. Collaborated with team members to build, test, and debug software modules, ensuring performance and reliability. Worked with databases and APIs to design backend logic supporting scalable application development. Participated in code reviews, troubleshooting, and software testing to enhance application quality and maintainability.' }
 ]
 
-const certificates = ['MERN Stack - AI', 'Advanced Data Structures & Algorithms', 'Python for Data Science & AI', 'Applied Statistics', 'UI Design with Figma']
+const certificates = [
+  { name: 'MERN Stack - AI', issuer: 'Hysteresis Pvt Ltd' },
+  { name: 'Advanced Data Structures and Algorithms', issuer: 'Packt' },
+  { name: 'Python for Data Science & AI', issuer: 'Coursera (IBM / University Partner)' },
+  { name: 'Applied Statistics for Data Analysis', issuer: 'Coursera' },
+  { name: 'User Interface (UI) Design with Figma', issuer: 'Coursera' }
+]
+
+const education = [
+  { degree: 'Master of Computer Applications (GenAI)', institution: 'Alliance University, Bangalore', period: 'Oct 2025 - May 2027', description: 'Data Structures & Algorithms, Object-Oriented Programming, System Design Basics' },
+  { degree: 'Bachelor of Computer Applications (BCA)', institution: 'Sahyadri Degree College, Karnataka', period: 'Sep 2022 – Apr 2025', description: '' },
+  { degree: 'Intermediate (10+2)', institution: 'Narayan PU College, Kolar, Karnataka', period: 'Jun 2020 – Apr 2022', description: '' },
+  { degree: 'Secondary School Leaving Certificate (SSLC / 10th)', institution: 'New Jyothi Vidhya Samaste, Kolar, Karnataka', period: 'Jun 2019 – Apr 2020', description: '' }
+]
 
 function AnimatedOrb({ className, delay = 0 }: { className: string; delay?: number }) {
   return (
@@ -72,7 +84,7 @@ function AnimatedOrb({ className, delay = 0 }: { className: string; delay?: numb
   )
 }
 
-function MagneticButton({ children, className, href }: { children: React.ReactNode; className?: string; href?: string }) {
+function MagneticButton({ children, className, href, target, rel }: { children: React.ReactNode; className?: string; href?: string; target?: string; rel?: string }) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -94,6 +106,8 @@ function MagneticButton({ children, className, href }: { children: React.ReactNo
     <Component
       ref={ref as any}
       href={href}
+      target={target}
+      rel={rel}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={className}
@@ -219,7 +233,7 @@ export default function App() {
     }
   }, [])
 
-  const heroWords = useMemo(() => ['Python Developer', 'AI Engineer', 'Machine Learning Enthusiast', 'Deep Learning Engineer', 'TensorFlow Developer', 'PyTorch Developer', 'LLM Developer', 'Prompt Engineer', 'Generative AI Developer'], [])
+  const heroWords = useMemo(() => ['Python Developer', 'Full Stack Developer', 'AI Engineer', 'Machine Learning Enthusiast', 'MERN Stack Developer', 'Backend Developer', 'API Developer', 'Software Developer'], [])
   const [wordIndex, setWordIndex] = useState(0)
   const [displayText, setDisplayText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -328,7 +342,7 @@ export default function App() {
                     ease: 'linear',
                   }}
                 >
-                  Sanjana
+                  Sanjana S R
                 </motion.span>
               </motion.h1>
               <h2 className="mt-6 text-2xl font-medium text-[#B7B7B7] sm:text-3xl lg:text-4xl">
@@ -338,12 +352,18 @@ export default function App() {
                 I design and ship intelligent systems at the intersection of Python, machine learning, deep learning, LLMs, and generative AI with a strong product mindset.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
-                {['Resume', 'GitHub', 'LinkedIn', 'Contact'].map((label, index) => (
-                  <MagneticButton key={label} href={label === 'Contact' ? '#contact' : '#'} className={`inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition ${index === 0 ? 'bg-[#FF6B00] text-white hover:bg-[#FF6B00]/90' : 'border border-white/10 bg-white/5 text-white hover:border-[#FF6B00]/50'}`}>
-                    {label === 'Resume' ? <Download size={18} /> : label === 'GitHub' ? <Github size={18} /> : label === 'LinkedIn' ? <Linkedin size={18} /> : <Mail size={18} />}
-                    {label}
-                  </MagneticButton>
-                ))}
+                <MagneticButton href="#" className="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition bg-[#FF6B00] text-white hover:bg-[#FF6B00]/90">
+                  <Download size={18} /> Resume
+                </MagneticButton>
+                <MagneticButton href="https://github.com/sanjanaa6" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition border border-white/10 bg-white/5 text-white hover:border-[#FF6B00]/50">
+                  <Github size={18} /> GitHub
+                </MagneticButton>
+                <MagneticButton href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition border border-white/10 bg-white/5 text-white hover:border-[#FF6B00]/50">
+                  <Linkedin size={18} /> LinkedIn
+                </MagneticButton>
+                <MagneticButton href="#contact" className="inline-flex items-center gap-2 rounded-full px-5 py-3 font-medium transition border border-white/10 bg-white/5 text-white hover:border-[#FF6B00]/50">
+                  <Mail size={18} /> Contact
+                </MagneticButton>
               </div>
               <div className="mt-10 grid gap-3 sm:grid-cols-3">
                 {heroStats.map((stat) => (
@@ -386,20 +406,38 @@ export default function App() {
         </section>
 
         <section id="about" className="px-6 py-24 sm:px-10 lg:px-20">
-          <SectionTitle eyebrow="About" title="Crafting intelligence with product clarity" description="I merge rigorous AI engineering with calm, elegant product design to build systems that feel both powerful and intuitive." />
+          <SectionTitle eyebrow="About" title="Crafting intelligence with product clarity" description="MCA student skilled in Python, SQL, and full-stack web development with experience in scalable applications and AI projects." />
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.25 }} className="glass rounded-[2rem] p-8">
               <div className="mx-auto h-64 w-64 rounded-full border border-[#FF6B00]/40 bg-[radial-gradient(circle,_rgba(255,107,0,0.2),_transparent_70%)]" />
               <div className="mt-8 space-y-4 text-[#B7B7B7]">
-                <p>Python-first developer with a strong background in ML, DL, LLMs, and FastAPI-based AI products.</p>
-                <p>Built solutions across research, deployment, and product integration for teams that need reliable, high-impact AI experiences.</p>
+                <p>MCA student skilled in Python, SQL, and full-stack web development with experience in scalable applications and AI projects.</p>
+                <p>Proficient in backend development, API design, and database management using MySQL, MongoDB, and PostgreSQL. Strong foundation in data structures, algorithms, and software engineering principles with hands-on project experience.</p>
+                <p>Seeking an entry-level Software Development Engineer role to contribute technical expertise and grow in a collaborative environment.</p>
               </div>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.25 }} className="glass rounded-[2rem] p-8">
-              <div className="grid gap-6 md:grid-cols-2">
-                {['Python', 'Machine Learning', 'Deep Learning', 'TensorFlow', 'PyTorch', 'LLMs', 'FastAPI', 'LangChain', 'Vector Databases', 'Prompt Engineering', 'RAG', 'Problem Solving'].map((item) => (
-                  <div key={item} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4 text-sm text-[#E7E7E7]">{item}</div>
-                ))}
+              <div className="space-y-4 text-[#B7B7B7]">
+                <h3 className="text-xl font-semibold text-white">Professional Summary</h3>
+                <p>MCA student skilled in Python, SQL, and full-stack web development with experience in scalable applications and AI projects. Proficient in backend development, API design, and database management using MySQL, MongoDB, and PostgreSQL.</p>
+                <p>Strong foundation in data structures, algorithms, and software engineering principles with hands-on project experience. Seeking an entry-level Software Development Engineer role to contribute technical expertise and grow in a collaborative environment.</p>
+                <div className="mt-6 grid gap-6 md:grid-cols-2">
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">Contact Information</h4>
+                    <p><span className="text-[#FF6B00]">Email:</span> sanjnaasingh.05@gmail.com</p>
+                    <p><span className="text-[#FF6B00]">Phone:</span> 7338336512</p>
+                    <p><span className="text-[#FF6B00]">Location:</span> Bengaluru, India</p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-3">Profiles</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <a href="https://github.com/sanjanaa6" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">GitHub</a>
+                      <a href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">LinkedIn</a>
+                      <a href="https://www.hackerrank.com/profile/sanjanaasingh_05" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Hackerrank</a>
+                      <a href="https://leetcode.com/u/sanjana258/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Leetcode</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -511,6 +549,8 @@ export default function App() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       href={project.github} 
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="rounded-full border border-white/10 px-4 py-2 text-sm hover:border-[#FF6B00]/70 transition-all"
                     >
                       GitHub
@@ -519,6 +559,8 @@ export default function App() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       href={project.demo} 
+                      target={project.demo !== '#' ? "_blank" : undefined}
+                      rel={project.demo !== '#' ? "noopener noreferrer" : undefined}
                       className="rounded-full bg-[#FF6B00] px-4 py-2 text-sm text-white hover:bg-[#FF6B00]/90 transition-all"
                     >
                       Live Demo
@@ -548,18 +590,36 @@ export default function App() {
           </div>
         </section>
 
+        <section id="education" className="px-6 py-24 sm:px-10 lg:px-20">
+          <SectionTitle eyebrow="Education" title="Academic foundation and continuous learning" description="Building a strong technical foundation through comprehensive education in computer science and AI." />
+          <div className="space-y-6">
+            {education.map((edu, index) => (
+              <motion.div key={edu.degree} initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.25 }} className="glass rounded-[1.5rem] p-8">
+                <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.3em] text-[#FF6B00]">{edu.period}</p>
+                    <h3 className="mt-2 text-2xl font-semibold text-white">{edu.degree}</h3>
+                    <p className="mt-1 text-[#B7B7B7]">{edu.institution}</p>
+                  </div>
+                </div>
+                {edu.description && <p className="mt-5 max-w-3xl text-[#B7B7B7]">{edu.description}</p>}
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         <section id="certificates" className="px-6 py-24 sm:px-10 lg:px-20">
           <SectionTitle eyebrow="Certificates" title="Recognized credentials and continued learning" description="A curated portfolio of certifications that reinforce my engineering depth and product understanding." />
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {certificates.map((certificate, index) => (
               <motion.div 
-                key={certificate} 
+                key={certificate.name} 
                 initial={{ opacity: 0, y: 24 }} 
                 whileInView={{ opacity: 1, y: 0 }} 
                 viewport={{ once: true, amount: 0.2 }} 
                 whileHover={{ y: -8, scale: 1.05, borderColor: '#FF6B00' }} 
                 transition={{ delay: index * 0.05 }} 
-                className="glass flex min-h-48 items-center justify-center rounded-[1.6rem] border border-[#FF6B00]/20 p-8 text-center text-xl font-semibold text-white transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6B00]/20 relative overflow-hidden group"
+                className="glass flex min-h-48 flex-col items-center justify-center rounded-[1.6rem] border border-[#FF6B00]/20 p-8 text-center transition-all duration-300 hover:shadow-2xl hover:shadow-[#FF6B00]/20 relative overflow-hidden group"
               >
                 <motion.div 
                   initial={{ opacity: 0, scale: 0 }}
@@ -568,9 +628,15 @@ export default function App() {
                 />
                 <motion.span 
                   whileHover={{ scale: 1.1, textShadow: '0 0 20px rgba(255,107,0,0.5)' }}
-                  className="relative z-10 transition-all"
+                  className="relative z-10 text-xl font-semibold text-white transition-all"
                 >
-                  {certificate}
+                  {certificate.name}
+                </motion.span>
+                <motion.span 
+                  whileHover={{ scale: 1.05 }}
+                  className="relative z-10 mt-2 text-sm text-[#B7B7B7] transition-all"
+                >
+                  {certificate.issuer}
                 </motion.span>
               </motion.div>
             ))}
@@ -591,12 +657,17 @@ export default function App() {
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.25 }} className="glass rounded-[1.8rem] p-8">
               <div className="space-y-4 text-[#B7B7B7]">
-                <p><span className="text-white">Email:</span> sanjana@example.com</p>
+                <p><span className="text-white">Email:</span> sanjnaasingh.05@gmail.com</p>
+                <p><span className="text-white">Phone:</span> 7338336512</p>
                 <p><span className="text-white">Location:</span> Bengaluru, India</p>
-                <div className="flex gap-3 pt-4">
-                  {[Github, Linkedin, Mail].map((Icon, index) => (
-                    <a key={index} href="#" className="rounded-full border border-white/10 p-3 text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10"><Icon size={18} /></a>
-                  ))}
+                <div className="space-y-2 pt-4">
+                  <p className="text-white font-medium">Coding Profiles:</p>
+                  <div className="flex flex-wrap gap-2">
+                    <a href="https://github.com/sanjanaa6" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">LinkedIn</a>
+                    <a href="https://www.hackerrank.com/profile/sanjanaasingh_05" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Hackerrank</a>
+                    <a href="https://leetcode.com/u/sanjana258/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Leetcode</a>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -623,7 +694,7 @@ export default function App() {
 
       <footer className="border-t border-white/10 px-6 py-8 text-center text-sm text-[#B7B7B7] sm:px-10 lg:px-20">
         <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-          <p>© 2026 Sanjana. Crafted for the future of AI.</p>
+          <p>© 2026 Sanjana S R. Crafted for the future of AI.</p>
           <a href="#home" className="text-[#FF6B00]">Back to top ↑</a>
         </div>
       </footer>
