@@ -7,56 +7,46 @@ import { SiTensorflow, SiPytorch, SiFastapi } from 'react-icons/si'
 const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Certificates', 'Resume', 'Contact']
 
 const skills = [
-  { title: 'Programming', icon: <Code2 size={24} />, items: ['Python', 'SQL', 'TypeScript'] },
-  { title: 'Machine Learning', icon: <Cpu size={24} />, items: ['Scikit-learn', 'XGBoost', 'Pipelines'] },
-  { title: 'Deep Learning', icon: <BrainCircuit size={24} />, items: ['CNNs', 'Transformers', 'GANs'] },
-  { title: 'TensorFlow', icon: <SiTensorflow size={24} />, items: ['Keras', 'TF Lite', 'Serving'] },
-  { title: 'PyTorch', icon: <SiPytorch size={24} />, items: ['Lightning', 'Distributed', 'Inference'] },
-  { title: 'LLMs', icon: <SiFastapi size={24} />, items: ['Prompting', 'RAG', 'Agents'] },
-  { title: 'FastAPI', icon: <SiFastapi size={24} />, items: ['APIs', 'Async', 'Auth'] },
-  { title: 'Cloud & DevOps', icon: <FaDocker size={24} />, items: ['Docker', 'AWS', 'CI/CD'] }
+  { title: 'Programming', icon: <Code2 size={24} />, items: ['Python', 'JavaScript', 'Java', 'PHP', 'SQL'] },
+  { title: 'Web Development', icon: <Code2 size={24} />, items: ['HTML', 'CSS', 'Node.js', 'React.js', 'MERN Stack'] },
+  { title: 'Machine Learning', icon: <Cpu size={24} />, items: ['Scikit-learn', 'ML', 'Hugging Face', 'OpenRouter'] },
+  { title: 'AI & LLMs', icon: <BrainCircuit size={24} />, items: ['LangChain', 'FastAPI', 'Prompting', 'RAG'] },
+  { title: 'Databases', icon: <Cpu size={24} />, items: ['MySQL', 'MongoDB', 'PostgreSQL'] },
+  { title: 'Tools', icon: <FaDocker size={24} />, items: ['GitHub', 'Docker', 'Jupyter', 'Google Colab', 'VS Code'] },
+  { title: 'CS Fundamentals', icon: <Code2 size={24} />, items: ['Data Structures', 'Algorithms', 'OOP', 'System Design'] },
+  { title: 'Development', icon: <Cpu size={24} />, items: ['Backend APIs', 'Debugging', 'API Development'] }
 ]
 
 const projects = [
   {
-    title: 'Neural Atlas',
+    title: 'AI Hiring Assistant',
     category: 'AI Platform',
-    description: 'A multimodal RAG system with agent workflows, vector search, and enterprise-grade orchestration.',
-    stack: ['Python', 'FastAPI', 'PyTorch', 'RAG'],
-    github: '#',
-    demo: '#'
+    description: 'AI-powered hiring platform for resume screening and candidate evaluation with FastAPI backend and OpenAI integration.',
+    stack: ['MERN Stack', 'FastAPI', 'OpenAI API', 'React.js'],
+    github: 'https://github.com/sanjanaa6',
+    demo: 'https://aihiring.eval8.ai/'
   },
   {
-    title: 'Cortex Vision',
-    category: 'Computer Vision',
-    description: 'High-performance vision pipeline for defect detection and anomaly localization at scale.',
-    stack: ['TensorFlow', 'OpenCV', 'Docker', 'AWS'],
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Prompt Forge',
-    category: 'LLM Apps',
-    description: 'A prompt evaluation and experimentation workspace for production LLM products.',
-    stack: ['LangChain', 'LLMs', 'React', 'TypeScript'],
-    github: '#',
+    title: 'Bank Note Authentication',
+    category: 'Machine Learning',
+    description: 'Machine learning model to classify genuine vs counterfeit banknotes with real-time prediction pipeline.',
+    stack: ['Python', 'Scikit-learn', 'Machine Learning'],
+    github: 'https://github.com/sanjanaa6/Bank_note_classify',
     demo: '#'
   }
 ]
 
 const heroStats = [
-  { value: '130+', label: 'ML models delivered' },
-  { value: '24/7', label: 'Reliable deployment uptime' },
-  { value: '10x', label: 'AI productivity uplift' }
+  { value: '5+', label: 'AI/ML Projects' },
+  { value: '3+', label: 'Certifications' },
+  { value: 'MCA', label: 'GenAI Specialization' }
 ]
 
 const experiences = [
-  { role: 'AI Engineer', company: 'OpenAI Ecosystem Studio', period: '2024 - Present', description: 'Shipping LLM copilots and inference pipelines for strategic AI products.' },
-  { role: 'ML Research Engineer', company: 'NVIDIA', period: '2022 - 2024', description: 'Built deep learning training systems and applied computer vision production solutions.' },
-  { role: 'Backend & ML Developer', company: 'Microsoft', period: '2020 - 2022', description: 'Delivered data-driven forecasting services and robust APIs for intelligent products.' }
+  { role: 'Software Development - AI Intern', company: 'Hysteresis', period: '2025 - Present', description: 'Developing web application features using modern frameworks, collaborating with team members to build, test, and debug software modules. Working with databases and APIs to design backend logic for scalable applications.' }
 ]
 
-const certificates = ['TensorFlow Developer', 'AWS ML Specialty', 'DeepLearning.AI', 'LangChain Certified']
+const certificates = ['MERN Stack - AI', 'Advanced Data Structures & Algorithms', 'Python for Data Science & AI', 'Applied Statistics', 'UI Design with Figma']
 
 function AnimatedOrb({ className, delay = 0 }: { className: string; delay?: number }) {
   return (
