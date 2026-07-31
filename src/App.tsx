@@ -431,10 +431,10 @@ export default function App() {
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-3">Profiles</h4>
                     <div className="flex flex-wrap gap-2">
-                      <a href="https://github.com/sanjanaa6" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">GitHub</a>
-                      <a href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">LinkedIn</a>
-                      <a href="https://www.hackerrank.com/profile/sanjanaasingh_05" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Hackerrank</a>
-                      <a href="https://leetcode.com/u/sanjana258/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Leetcode</a>
+                      <a href="https://github.com/sanjanaa6" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">GitHub</a>
+                      <a href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">LinkedIn</a>
+                      <a href="https://www.hackerrank.com/profile/sanjanaasingh_05" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Hackerrank</a>
+                      <a href="https://leetcode.com/u/sanjana258/" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Leetcode</a>
                     </div>
                   </div>
                 </div>
@@ -663,10 +663,10 @@ export default function App() {
                 <div className="space-y-2 pt-4">
                   <p className="text-white font-medium">Coding Profiles:</p>
                   <div className="flex flex-wrap gap-2">
-                    <a href="https://github.com/sanjanaa6" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">GitHub</a>
-                    <a href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">LinkedIn</a>
-                    <a href="https://www.hackerrank.com/profile/sanjanaasingh_05" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Hackerrank</a>
-                    <a href="https://leetcode.com/u/sanjana258/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Leetcode</a>
+                    <a href="https://github.com/sanjanaa6" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sanjana-singh-645a7a35b" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">LinkedIn</a>
+                    <a href="https://www.hackerrank.com/profile/sanjanaasingh_05" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Hackerrank</a>
+                    <a href="https://leetcode.com/u/sanjana258/" className="rounded-full border border-white/10 px-3 py-1 text-sm text-[#FF6B00] transition hover:border-[#FF6B00]/70 hover:bg-[#FF6B00]/10">Leetcode</a>
                   </div>
                 </div>
               </div>
