@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,6 +10,11 @@ export default {
   theme: {
     extend: {
       colors: {
+        sky: colors.amber,
+        violet: colors.orange,
+        indigo: colors.orange,
+        cyan: colors.yellow,
+        slate: colors.stone,
         cyber: {
           bg: '#05070f',
           card: 'rgba(15, 23, 42, 0.65)',
@@ -36,8 +43,8 @@ export default {
           '50%': { transform: 'translateY(-10px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 15px rgba(56, 189, 248, 0.2)' },
-          '100%': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.4)' },
+          '0%': { boxShadow: '0 0 15px rgba(212, 163, 115, 0.2)' },
+          '100%': { boxShadow: '0 0 30px rgba(184, 115, 51, 0.4)' },
         }
       },
       backdropBlur: {

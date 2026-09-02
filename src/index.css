@@ -4,17 +4,17 @@
 
 :root {
   color-scheme: dark;
-  --bg: #0a0d12;
-  --bg-soft: #101821;
-  --panel: rgba(15, 23, 32, 0.7);
-  --panel-strong: rgba(12, 17, 24, 0.88);
-  --line: rgba(148, 163, 184, 0.12);
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --brand: #7dd3fc;
-  --brand-strong: #38bdf8;
-  --accent: #a78bfa;
-  --gold: #fbbf24;
+  --bg: #120d0a;
+  --bg-soft: #1a120e;
+  --panel: rgba(26, 18, 14, 0.7);
+  --panel-strong: rgba(20, 14, 10, 0.88);
+  --line: rgba(168, 159, 145, 0.12);
+  --text: #f3e8e0;
+  --muted: #a89f91;
+  --brand: #d4a373;
+  --brand-strong: #e6b885;
+  --accent: #b87333;
+  --gold: #d4af37;
 }
 
 html {
@@ -26,8 +26,8 @@ html {
     margin: 0;
     min-height: 100vh;
     background:
-      radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 30%),
-      radial-gradient(circle at 85% 15%, rgba(167, 139, 250, 0.12), transparent 20%),
+      radial-gradient(circle at top, rgba(212, 163, 115, 0.12), transparent 30%),
+      radial-gradient(circle at 85% 15%, rgba(184, 115, 51, 0.12), transparent 20%),
       var(--bg);
     color: var(--text);
     font-family: Inter, 'Segoe UI', sans-serif;
@@ -48,17 +48,17 @@ html {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.14), transparent 20%),
-    radial-gradient(circle at 80% 0%, rgba(244, 114, 182, 0.08), transparent 25%),
-    radial-gradient(circle at 50% 100%, rgba(167, 139, 250, 0.10), transparent 22%);
+    radial-gradient(circle at 20% 20%, rgba(230, 184, 133, 0.14), transparent 20%),
+    radial-gradient(circle at 80% 0%, rgba(139, 69, 19, 0.08), transparent 25%),
+    radial-gradient(circle at 50% 100%, rgba(184, 115, 51, 0.10), transparent 22%);
 }
 
 .glass-card {
-  background: rgba(15, 23, 32, 0.68);
+  background: rgba(26, 18, 14, 0.68);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(148, 163, 184, 0.12);
-  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.32);
+  border: 1px solid rgba(168, 159, 145, 0.12);
+  box-shadow: 0 20px 50px rgba(10, 7, 5, 0.32);
 }
 
 .glass-card-hover {
@@ -67,24 +67,24 @@ html {
 
 .glass-card-hover:hover {
   transform: translateY(-4px);
-  border-color: rgba(125, 211, 252, 0.35);
-  box-shadow: 0 26px 50px rgba(14, 165, 233, 0.10);
+  border-color: rgba(212, 163, 115, 0.35);
+  box-shadow: 0 26px 50px rgba(184, 115, 51, 0.10);
 }
 
 .glass-nav {
-  background: rgba(10, 13, 18, 0.72);
+  background: rgba(18, 13, 10, 0.72);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.10);
+  border-bottom: 1px solid rgba(168, 159, 145, 0.10);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #e2e8f0 0%, #7dd3fc 35%, #a78bfa 72%, #f9a8d4 100%);
+  background: linear-gradient(135deg, #f3e8e0 0%, #e6b885 35%, #b87333 72%, #8b4513 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-soft {
-  background: linear-gradient(135deg, #7dd3fc 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #d4a373 0%, #b87333 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -101,8 +101,8 @@ html {
 .bg-grid-pattern {
   background-size: 32px 32px;
   background-image:
-    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(168, 159, 145, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(168, 159, 145, 0.04) 1px, transparent 1px);
 }
 
 .floating-orb {
@@ -119,15 +119,15 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0d12;
+  background: #120d0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.28);
+  background: rgba(168, 159, 145, 0.28);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(125, 211, 252, 0.45);
+  background: rgba(212, 163, 115, 0.45);
 }
 
