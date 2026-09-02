@@ -44,21 +44,20 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-32 pb-20 md:pt-36 md:pb-32">
+    <section id="hero" className="relative min-h-screen overflow-hidden bg-black">
       {/* Background Watermark/Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-black text-white/[0.02] tracking-tighter uppercase whitespace-nowrap pointer-events-none select-none z-0">
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-black text-white/[0.02] tracking-tighter uppercase whitespace-nowrap pointer-events-none select-none z-0 hidden lg:block">
         {PERSONAL_INFO.name.split(' ')[0]}
       </div>
 
-      <div className="section-shell relative z-10">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 items-center">
-
-          {/* Left Column */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen w-full">
+        {/* Left Column - Text Content */}
+        <div className="flex flex-col justify-center px-6 lg:px-16 xl:px-24 py-32 lg:py-0 z-10 order-2 lg:order-1 relative">
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             animate="show"
-            className="space-y-8 text-center lg:text-left z-10"
+            className="space-y-8 text-center lg:text-left z-10 pt-10 lg:pt-0"
           >
             <motion.div variants={fadeUpVariant} className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-orange-400 shadow-lg shadow-orange-900/20">
               <span className="text-orange-500">▶</span>
@@ -66,18 +65,18 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             <motion.div variants={fadeUpVariant} className="space-y-4 relative overflow-hidden">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tighter uppercase">
+              <h1 className="text-5xl sm:text-7xl lg:text-[5.5rem] xl:text-8xl font-black leading-[0.9] tracking-tighter uppercase">
                 <span className="block text-white drop-shadow-lg">{PERSONAL_INFO.name.split(' ')[0] || 'Your'}</span>
                 <span className="block text-orange-500 drop-shadow-lg">{PERSONAL_INFO.name.split(' ').slice(1).join(' ') || 'Name'}</span>
               </h1>
             </motion.div>
 
-              <div className="flex items-center justify-center lg:justify-start gap-3 mt-6">
-                <span className="text-orange-500 animate-pulse">▶</span>
-                <h2 className="text-xl sm:text-2xl font-medium text-white tracking-wide">
-                  {PERSONAL_INFO.title}
-                </h2>
-              </div>
+            <motion.div variants={fadeUpVariant} className="flex items-center justify-center lg:justify-start gap-3 mt-6">
+              <span className="text-orange-500 animate-pulse">▶</span>
+              <h2 className="text-lg sm:text-2xl font-medium text-white tracking-wide">
+                {PERSONAL_INFO.title}
+              </h2>
+            </motion.div>
             
             <motion.p variants={fadeUpVariant} className="mx-auto max-w-xl text-sm sm:text-base leading-7 text-stone-400 lg:mx-0">
               {PERSONAL_INFO.summary}
@@ -99,14 +98,6 @@ export const Hero: React.FC = () => {
                 <Sparkles className="w-4 h-4 text-orange-500" />
                 <span>View Resume</span>
               </a>
-
-              <a
-                href={`mailto:${PERSONAL_INFO.email}?subject=Project Inquiry`}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-medium text-stone-300 transition-all hover:border-white/20 hover:text-white"
-              >
-                <Download className="w-4 h-4 text-stone-400" />
-                <span>Download PDF</span>
-              </a>
             </motion.div>
 
             <motion.div variants={fadeUpVariant} className="flex items-center justify-center lg:justify-start gap-3 pt-8 border-t border-white/5">
@@ -121,76 +112,30 @@ export const Hero: React.FC = () => {
               </a>
             </motion.div>
           </motion.div>
+        </div>
 
-          {/* Right Column */}
-          <motion.div 
-            initial="hidden"
-            animate="show"
-            variants={springImage}
-            className="relative mx-auto w-full max-w-[420px] lg:max-w-none flex items-center justify-center h-[500px] z-10 perspective-[1000px]"
+        {/* Right Column - Full Bleed Video */}
+        <div className="relative h-[60vh] lg:h-screen w-full z-0 order-1 lg:order-2 overflow-hidden bg-black">
+          <motion.div
+             initial={{ opacity: 0, scale: 1.05 }}
+             animate={{ opacity: 1, scale: 1 }}
+             transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
+             className="w-full h-full"
           >
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0,transparent_60%)] -z-10" />
-
-            {/* Image Card */}
-            <div className="relative rounded-[2.5rem] bg-stone-900 border border-white/10 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-[400px]">
-              <img
-                src="/portrait_sunset.jpg"
-                alt="Portrait"
-                className="w-full aspect-[4/5] object-cover rounded-[2.25rem] brightness-110 contrast-125 saturate-150"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?q=80&w=1000&auto=format&fit=crop';
-                }}
-              />
-
-              {/* Floating Stat 1 */}
-              <motion.div 
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.8, type: "spring", stiffness: 200, damping: 15 }}
-                className="absolute -top-4 -left-6 rounded-2xl border border-white/10 bg-stone-900/80 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 animate-float"
-              >
-                <div className="text-orange-500 font-black text-xl">{PERSONAL_INFO.stats[1].value}</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 leading-tight">Client<br />Satisfaction</div>
-              </motion.div>
-
-              {/* Floating Stat 2 */}
-              <motion.div 
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}
-                className="absolute top-12 -right-8 rounded-2xl border border-white/10 bg-stone-900/80 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 animate-float" style={{ animationDelay: '1.5s' }}
-              >
-                <div className="text-orange-500 font-black text-xl">{PERSONAL_INFO.stats[0].value}</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 leading-tight">Projects<br />Launched</div>
-              </motion.div>
-
-              {/* Bottom Info Overlay */}
-              <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/10 bg-stone-950/80 backdrop-blur-md p-4 flex items-center justify-between">
-                <div>
-                  <div className="font-black text-white tracking-widest uppercase text-sm">{PERSONAL_INFO.name}</div>
-                  <div className="text-[10px] font-bold text-orange-400 tracking-widest uppercase mt-1">Design • Frontend</div>
-                </div>
-                <div className="w-9 h-9 rounded-xl bg-orange-500 flex items-center justify-center text-stone-950">
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </div>
-            </div>
-
-            {/* Tech Decoration */}
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 0.5 }} 
-              transition={{ delay: 1.5 }}
-              className="absolute bottom-0 right-10 flex flex-col items-center gap-2"
-            >
-              <div className="w-[1px] h-12 bg-gradient-to-t from-transparent to-orange-500/50"></div>
-              <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
-              <div className="text-[8px] uppercase tracking-[0.3em] text-orange-400 mt-2 rotate-90 origin-left ml-6 whitespace-nowrap">Scroll</div>
-            </motion.div>
+             <video
+               src="/hero_video.mp4"
+               autoPlay
+               loop
+               muted
+               playsInline
+               className="w-full h-full object-cover"
+             />
           </motion.div>
         </div>
       </div>
+
+      {/* Bottom fade to blend into the next section's background (#0a0d12) */}
+      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0a0d12] to-transparent z-10 pointer-events-none"></div>
     </section>
   );
 };
