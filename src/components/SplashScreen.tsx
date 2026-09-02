@@ -11,7 +11,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
         y: '-100%', 
         transition: { 
           duration: 0.8, 
-          ease: [0.76, 0, 0.24, 1],
+          ease: [0.76, 0, 0.24, 1] as any,
           delay: 1.5 
         } 
       }}
@@ -59,7 +59,7 @@ export const SplashScreen: React.FC<{ onComplete: () => void }> = ({ onComplete 
           <motion.div
             initial={{ x: '-100%' }}
             animate={{ x: '0%' }}
-            transition={{ duration: 1, delay: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 1, delay: 0.8, ease: [0.76, 0, 0.24, 1] as any }}
             className="absolute inset-0 bg-orange-500"
           />
         </motion.div>
