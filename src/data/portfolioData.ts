@@ -28,170 +28,185 @@ export interface TimelineItem {
 }
 
 export const PERSONAL_INFO = {
-  name: 'Sanjana Singh',
-  title: 'Product Designer & Full-Stack Developer',
+  name: 'Sanjana S R',
+  title: 'Software Development Engineer & AI Enthusiast',
   roles: [
-    'Product Designer',
+    'Software Engineer',
     'Full-Stack Developer',
-    'Brand Storyteller',
-    'UI Systems Specialist'
+    'AI / ML Developer',
+    'Backend Specialist'
   ],
-  location: 'Remote / Worldwide',
-  email: 'hello@yourportfolio.com',
-  github: 'https://github.com',
-  linkedin: 'https://linkedin.com',
-  status: 'Available for product and digital design work',
-  summary: 'I design thoughtful digital experiences and build polished products that combine strategy, usability, and clean engineering. My work sits at the intersection of brand, product design, and frontend craftsmanship.',
+  location: 'Bangalore / Remote',
+  email: 'sanjnaasingh.05@gmail.com',
+  github: 'https://github.com/sanjanaa6',
+  linkedin: 'https://www.linkedin.com/in/sanjana-singh-645a7a35b/',
+  status: 'Seeking entry-level Software Development Engineer role',
+  summary: 'MCA student skilled in Python, SQL, and full-stack web development with experience in scalable applications and AI projects. Seeking to contribute technical expertise and grow in a collaborative environment.',
+  fullBio: [
+    "I am an MCA student specializing in GenAI at Alliance University, deeply passionate about software engineering, full-stack development, and artificial intelligence.",
+    "My expertise lies in backend development, API design, and database management using MySQL and MongoDB. I have a strong foundation in data structures, algorithms, and software engineering principles.",
+    "I love building scalable applications, from AI-powered hiring platforms to machine learning models for classification. I am constantly exploring new technologies like Langchain, FastAPI, and React to turn complex problems into efficient digital solutions."
+  ],
   stats: [
-    { label: 'Projects launched', value: '42+' },
-    { label: 'Client satisfaction', value: '96%' },
-    { label: 'Avg. delivery speed', value: '2-4 wks' },
-    { label: 'Years building', value: '6+' }
+    { label: 'Projects Built', value: '10+' },
+    { label: 'DSA & CS Fundas', value: 'Strong' },
+    { label: 'Hackerrank/Leetcode', value: 'Active' },
+    { label: 'Focus Area', value: 'AI & Web' }
   ]
 };
 
 export const SKILLS_DATA: SkillCategory[] = [
   {
-    title: 'Design Strategy',
-    iconName: 'BrainCircuit',
-    skills: [
-      { name: 'UX Research', level: 92 },
-      { name: 'Wireframing & IA', level: 90 },
-      { name: 'Design Systems', level: 94 },
-      { name: 'Brand Direction', level: 88 },
-      { name: 'Prototyping', level: 96 }
-    ]
-  },
-  {
-    title: 'Frontend Engineering',
+    title: 'Languages & Web',
     iconName: 'Code',
     skills: [
-      { name: 'React & TypeScript', level: 94 },
-      { name: 'Next.js', level: 90 },
-      { name: 'Tailwind CSS', level: 95 },
-      { name: 'Performance Optimization', level: 88 },
-      { name: 'Accessibility', level: 91 }
+      { name: 'Python', level: 95 },
+      { name: 'JavaScript & React.js', level: 90 },
+      { name: 'Java & PHP', level: 80 },
+      { name: 'HTML & CSS', level: 95 },
+      { name: 'Node.js & MERN', level: 85 }
     ]
   },
   {
-    title: 'Product Building',
+    title: 'Backend & Data',
     iconName: 'Server',
     skills: [
-      { name: 'Product Thinking', level: 92 },
-      { name: 'Roadmapping', level: 86 },
-      { name: 'API Integration', level: 90 },
-      { name: 'Testing & QA', level: 84 },
-      { name: 'Agile Delivery', level: 89 }
+      { name: 'MySQL & PostgreSQL', level: 90 },
+      { name: 'MongoDB', level: 88 },
+      { name: 'FastAPI & API Design', level: 92 },
+      { name: 'Backend Development', level: 90 },
+      { name: 'System Design Basics', level: 80 }
     ]
   },
   {
-    title: 'Creative Execution',
-    iconName: 'Sparkles',
+    title: 'AI & Machine Learning',
+    iconName: 'BrainCircuit',
     skills: [
-      { name: 'Landing Pages', level: 96 },
-      { name: 'Brand Experience', level: 90 },
-      { name: 'Content Systems', level: 82 },
-      { name: 'Visual Storytelling', level: 92 },
-      { name: 'Motion Direction', level: 79 }
+      { name: 'Machine Learning', level: 85 },
+      { name: 'Scikit-learn', level: 88 },
+      { name: 'Langchain & OpenRouter', level: 82 },
+      { name: 'Hugging Face', level: 80 },
+      { name: 'Data Preprocessing', level: 85 }
+    ]
+  },
+  {
+    title: 'Tools & Core CS',
+    iconName: 'Layers',
+    skills: [
+      { name: 'Data Structures & Algos', level: 92 },
+      { name: 'OOP Principles', level: 90 },
+      { name: 'GitHub & Docker', level: 85 },
+      { name: 'Jupyter & Colab', level: 90 },
+      { name: 'Debugging & QA', level: 88 }
     ]
   }
 ];
 
 export const PROJECTS_DATA: Project[] = [
   {
-    id: 'atlas-portal',
-    title: 'Atlas Platform Redesign',
+    id: 'ai-hiring-assistant',
+    title: 'AI Hiring Assistant',
     category: 'web',
-    description: 'A premium SaaS dashboard and knowledge portal for modern teams, built to simplify reporting and collaboration.',
-    detailedOverview: 'I redesigned the customer experience and product UI to improve clarity, trust, and adoption across a complex SaaS platform. The new system combined cleaner information architecture with a more confident visual language.',
-    tags: ['UX Strategy', 'React', 'Design System', 'Dashboard'],
-    metrics: '31% increase in activation',
-    githubUrl: 'https://github.com',
-    liveUrl: '#',
+    description: 'An AI-powered hiring platform for resume screening and candidate evaluation.',
+    detailedOverview: 'Built an intelligent platform utilizing the MERN stack and FastAPI. The system integrates OpenAI models to accurately match candidate skills with job requirements, presented through a responsive React.js interface with secure authentication.',
+    tags: ['MERN Stack', 'FastAPI', 'OpenAI API', 'React.js'],
+    metrics: 'Automated AI resume screening',
+    githubUrl: 'https://github.com/sanjanaa6',
+    liveUrl: 'https://aihiring.eval8.ai/',
     featured: true,
     architectureHighlights: [
-      'Information architecture overhaul',
-      'Reusable component design system',
-      'Conversion-focused onboarding flow'
+      'FastAPI backend APIs for fast inference',
+      'OpenAI model integration for skill matching',
+      'Secure authentication and candidate management'
     ]
   },
   {
-    id: 'mira-brand',
-    title: 'Mira Studio Branding',
-    category: 'brand',
-    description: 'A strategic rebrand and digital identity system for a creative studio entering a new growth phase.',
-    detailedOverview: 'This engagement included brand positioning, message clarity, visual system updates, and a launch-ready website that translated the studio’s personality into a premium digital experience.',
-    tags: ['Brand Identity', 'Web Design', 'Storytelling', 'Strategy'],
-    metrics: '3x increase in inquiries',
-    githubUrl: 'https://github.com',
-    liveUrl: '#',
-    featured: true,
-    architectureHighlights: [
-      'Positioning and audience refinement',
-      'High-converting portfolio design',
-      'Tone and visual identity system'
-    ]
-  },
-  {
-    id: 'northstar-mobile',
-    title: 'Northstar Mobile App',
-    category: 'mobile',
-    description: 'A focused mobile product that helps professionals manage tasks, notes, and priorities without overwhelm.',
-    detailedOverview: 'The product was designed around clarity and habit building. We simplified the interface, made navigation more intuitive, and rebuilt key flows to reduce friction in daily use.',
-    tags: ['Mobile UX', 'Product Design', 'Research', 'Prototyping'],
-    metrics: '42% better task completion',
-    githubUrl: 'https://github.com',
-    liveUrl: '#',
-    featured: true,
-    architectureHighlights: [
-      'Usability-focused mobile flow design',
-      'Lean onboarding and retention loop',
-      'High-clarity data hierarchy'
-    ]
-  },
-  {
-    id: 'solace-product',
-    title: 'Solace Product Suite',
+    id: 'banknote-auth',
+    title: 'Bank Note Authentication',
     category: 'product',
-    description: 'A set of product experiences built to unify customer operations, analytics, and client communication.',
-    detailedOverview: 'The project focused on reducing complexity in a fragmented customer experience. I mapped the journey, refined the information hierarchy, and developed a consistent product interface that scaled across multiple surfaces.',
-    tags: ['UX Design', 'Frontend', 'Systems', 'Product'],
-    metrics: '2.1x faster weekly reporting',
-    githubUrl: 'https://github.com',
+    description: 'A machine learning system to classify genuine vs counterfeit banknotes.',
+    detailedOverview: 'Engineered a robust machine learning model applying data preprocessing, feature engineering, and model training using Python and Scikit-learn. The final product includes a real-time prediction pipeline for accurate banknote authentication.',
+    tags: ['Python', 'Machine Learning', 'Scikit-learn', 'Data Science'],
+    metrics: 'Real-time ML classification',
+    githubUrl: 'https://github.com/sanjanaa6/Bank_note_classify',
     liveUrl: '#',
-    featured: false,
+    featured: true,
     architectureHighlights: [
-      'Cross-functional product discovery',
-      'Scalable UI patterns and templates',
-      'Clear reporting and delivery flow'
+      'Data preprocessing and feature engineering',
+      'Model training with Scikit-learn',
+      'Real-time prediction pipeline'
     ]
   }
 ];
 
 export const TIMELINE_DATA: TimelineItem[] = [
   {
-    year: '2022 - Present',
-    title: 'Senior Product Designer & Frontend Engineer',
-    organization: 'Independent Consulting & Product Work',
-    description: 'Leading product strategy, interface design, and front-end execution for startups and service businesses focused on better digital experiences.',
+    year: 'Recent',
+    title: 'Software Development-AI Intern',
+    organization: 'Hysteresis',
+    description: 'Developed web application features using modern frameworks. Collaborated with teams to build and debug software modules. Worked with databases and APIs to design scalable backend logic.',
     type: 'experience',
-    badges: ['UX', 'React', 'Strategy', 'Design Systems']
+    badges: ['Web Dev', 'APIs', 'Databases', 'Debugging']
+  }
+];
+
+export const EDUCATION_DATA = [
+  {
+    year: 'Oct 2025 - May 2027',
+    degree: 'Master of Computer Applications (GenAI)',
+    institution: 'Alliance University, Bangalore',
+    description: 'Pursuing advanced studies with a specialization in Generative AI and modern software development.'
   },
   {
-    year: '2019 - 2022',
-    title: 'Digital Product Designer',
-    organization: 'Creative & SaaS Teams',
-    description: 'Built clean, conversion-friendly digital products across marketing, product, and content experiences while collaborating tightly with engineering and growth teams.',
-    type: 'experience',
-    badges: ['Figma', 'Research', 'Product', 'Growth']
+    year: 'Sep 2022 - Apr 2025',
+    degree: 'Bachelor of Computer Applications (BCA)',
+    institution: 'Sahyadri Degree College, Karnataka',
+    description: 'Core foundation in computer science, software engineering, and application development.'
   },
   {
-    year: '2015 - 2019',
-    title: 'B.A. in Visual Communication & Interaction Design',
-    organization: 'Design University',
-    description: 'Focused on visual design, human-centered systems, and digital storytelling with a strong emphasis on interface clarity and audience experience.',
-    type: 'education',
-    badges: ['UI Design', 'UX', 'Branding', 'Interaction']
+    year: 'Jun 2020 - Apr 2022',
+    degree: 'Intermediate (10+2)',
+    institution: 'Narayan PU College, Kolar, Karnataka',
+    description: 'Pre-university education focusing on science and mathematics.'
+  },
+  {
+    year: 'Jun 2019 - Apr 2020',
+    degree: 'Secondary School Leaving Certificate (SSLC / 10th)',
+    institution: 'New Jyothi Vidhya Samaste, Kolar, Karnataka',
+    description: 'Primary and secondary education foundations.'
+  }
+];
+
+export const CERTIFICATIONS_DATA = [
+  {
+    year: 'Recent',
+    title: 'MERN STACK - AI',
+    issuer: 'Hysteresis Pvt Ltd',
+    badge: 'MERN & AI'
+  },
+  {
+    year: 'Recent',
+    title: 'Advanced Data Structures and Algorithms',
+    issuer: 'Packt',
+    badge: 'DSA'
+  },
+  {
+    year: 'Recent',
+    title: 'Python for Data Science & AI',
+    issuer: 'Coursera (IBM)',
+    badge: 'Python/AI'
+  },
+  {
+    year: 'Recent',
+    title: 'Applied Statistics for Data Analysis',
+    issuer: 'Coursera',
+    badge: 'Data Science'
+  },
+  {
+    year: 'Recent',
+    title: 'User Interface (UI) Design with Figma',
+    issuer: 'Coursera',
+    badge: 'UI Design'
   }
 ];
 
