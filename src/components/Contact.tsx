@@ -169,7 +169,7 @@ export const Contact: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-400 via-cyan-400 to-violet-500 px-5 py-4 text-sm font-bold uppercase tracking-[0.18em] text-slate-950 transition-transform hover:-translate-y-0.5"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-500 px-5 py-4 text-sm font-bold uppercase tracking-[0.18em] text-stone-950 transition-transform hover:-translate-y-0.5"
                   >
                     <span>Send message</span>
                     <Send className="h-4 w-4" />

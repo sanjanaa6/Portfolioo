@@ -35,7 +35,7 @@ export const NeuralBackground: React.FC = () => {
     const numParticles = Math.min(Math.floor((width * height) / 18000), 75);
     const maxDistance = 140;
 
-    const colors = ['rgba(56, 189, 248, ', 'rgba(139, 92, 246, ', 'rgba(236, 72, 153, '];
+    const colors = ['rgba(212, 163, 115, ', 'rgba(184, 115, 51, ', 'rgba(139, 69, 19, '];
 
     for (let i = 0; i < numParticles; i++) {
       particles.push({
@@ -88,7 +88,7 @@ export const NeuralBackground: React.FC = () => {
         ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
         ctx.fillStyle = `${p1.color}0.9)`;
         ctx.shadowBlur = 10;
-        ctx.shadowColor = 'rgba(56, 189, 248, 0.5)';
+        ctx.shadowColor = 'rgba(212, 163, 115, 0.5)';
         ctx.fill();
         ctx.shadowBlur = 0;
 
@@ -104,7 +104,7 @@ export const NeuralBackground: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha})`;
+            ctx.strokeStyle = `rgba(212, 163, 115, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

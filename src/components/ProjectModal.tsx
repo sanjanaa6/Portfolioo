@@ -35,7 +35,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
         {/* Scrollable Content Body */}
         <div className="p-6 space-y-6 overflow-y-auto">
           {/* Metrics Pill */}
-          <div className="p-4 rounded-xl bg-gradient-to-r from-sky-950/60 to-purple-950/60 border border-sky-500/20 flex items-center gap-3">
+          <div className="p-4 rounded-xl bg-gradient-to-r from-amber-950/60 to-orange-950/60 border border-amber-500/20 flex items-center gap-3">
             <Zap className="w-5 h-5 text-amber-400 shrink-0" />
             <div>
               <div className="text-xs font-mono text-slate-400">Benchmark Metrics</div>

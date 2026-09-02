@@ -20,7 +20,7 @@ export const Hero: React.FC = () => {
       <div className="section-shell relative z-10">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-sky-200">
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-500/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-amber-200">
               <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
               {PERSONAL_INFO.status}
             </div>
@@ -47,7 +47,7 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2 lg:justify-start">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-indigo-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(56,189,248,0.28)] transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-500 px-6 py-3.5 text-sm font-semibold text-stone-950 shadow-[0_18px_40px_rgba(212,163,115,0.28)] transition-transform hover:-translate-y-0.5"
               >
                 <span>View my work</span>
                 <ArrowRight className="w-4 h-4" />
@@ -73,8 +73,8 @@ export const Hero: React.FC = () => {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="glass-card relative overflow-hidden rounded-[28px] border border-white/10 p-5 shadow-[0_25px_60px_rgba(15,23,42,0.7)]">
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-violet-500/10" />
+            <div className="glass-card relative overflow-hidden rounded-[28px] border border-white/10 p-5 shadow-[0_25px_60px_rgba(26,18,14,0.7)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-orange-500/10" />
               <div className="relative">
                 <div className="mb-5 flex items-center justify-between">
                   <div className="flex items-center gap-2">
@@ -115,7 +115,7 @@ export const Hero: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-sky-400/20 bg-gradient-to-r from-sky-500/10 to-violet-500/10 p-4">
+                  <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-r from-amber-500/10 to-orange-500/10 p-4">
                     <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">Approach</div>
                     <div className="mt-3 grid gap-3 sm:grid-cols-3">
                       <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3">

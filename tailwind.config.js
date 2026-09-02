@@ -15,6 +15,9 @@ export default {
         indigo: colors.orange,
         cyan: colors.yellow,
         slate: colors.stone,
+        purple: colors.amber,
+        pink: colors.orange,
+        fuchsia: colors.yellow,
         cyber: {
           bg: '#05070f',
           card: 'rgba(15, 23, 42, 0.65)',

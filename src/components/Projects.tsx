@@ -41,7 +41,7 @@ export const Projects: React.FC = () => {
               onClick={() => setFilter(cat.value as 'all' | 'web' | 'product' | 'brand' | 'mobile')}
               className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-all ${
                 filter === cat.value
-                  ? 'bg-gradient-to-r from-sky-400 to-violet-500 text-slate-950'
+                  ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950'
                   : 'border border-white/10 bg-white/5 text-slate-300 hover:border-slate-600 hover:text-white'
               }`}
             >

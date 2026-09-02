@@ -93,7 +93,7 @@ export const AboutSkills: React.FC = () => {
                 </div>
                 <div className="h-2.5 w-full overflow-hidden rounded-full border border-white/10 bg-slate-950/80">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-violet-500 transition-all duration-700 ease-out"
+                    className="h-full rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-500 transition-all duration-700 ease-out"
                     style={{ width: `${skill.level}%` }}
                   />
                 </div>

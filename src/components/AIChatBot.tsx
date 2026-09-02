@@ -101,9 +101,9 @@ export const AIChatBot: React.FC<AIChatBotProps> = ({ isOpen, onClose }) => {
         {/* Header Bar */}
         <div className="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 to-purple-600 flex items-center justify-center p-[1px]">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center p-[1px]">
               <div className="w-full h-full bg-slate-950 rounded-[7px] flex items-center justify-center">
-                <Bot className="w-4 h-4 text-sky-400" />
+                <Bot className="w-4 h-4 text-amber-400" />
               </div>
             </div>
             <div>
