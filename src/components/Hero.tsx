@@ -44,7 +44,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen overflow-hidden bg-black">
+    <section id="hero" className="relative min-h-screen overflow-hidden">
       {/* Background Watermark/Glow */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-black text-white/[0.02] tracking-tighter uppercase whitespace-nowrap pointer-events-none select-none z-0 hidden lg:block">
         {PERSONAL_INFO.name.split(' ')[0]}
@@ -53,7 +53,7 @@ export const Hero: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen w-full">
         {/* Left Column - Text Content */}
         <div className="flex flex-col justify-center px-6 lg:px-16 xl:px-24 py-32 lg:py-0 z-10 order-2 lg:order-1 relative">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="show"
@@ -77,7 +77,7 @@ export const Hero: React.FC = () => {
                 {PERSONAL_INFO.title}
               </h2>
             </motion.div>
-            
+
             <motion.p variants={fadeUpVariant} className="mx-auto max-w-xl text-sm sm:text-base leading-7 text-stone-400 lg:mx-0">
               {PERSONAL_INFO.summary}
             </motion.p>
@@ -114,28 +114,25 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column - Full Bleed Video */}
-        <div className="relative h-[60vh] lg:h-screen w-full z-0 order-1 lg:order-2 overflow-hidden bg-black">
+        {/* Right Column - Full Bleed Transparent Video */}
+        <div className="relative h-[60vh] lg:h-screen w-full z-0 order-1 lg:order-2 overflow-hidden">
           <motion.div
-             initial={{ opacity: 0, scale: 1.05 }}
-             animate={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
-             className="w-full h-full"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 0.8 }}
+            className="w-full h-full"
           >
-             <video
-               src="/hero_video.mp4"
-               autoPlay
-               loop
-               muted
-               playsInline
-               className="w-full h-full object-cover"
-             />
+            <video
+              src="/no-bg-1788356512925.webm"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
       </div>
-
-      {/* Bottom fade to blend into the next section's background (#0a0d12) */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0a0d12] to-transparent z-10 pointer-events-none"></div>
     </section>
   );
 };

@@ -37,14 +37,14 @@ export function App() {
           >
             <Navbar />
             <main>
-        <Hero />
-        <AboutSkills />
-        <Projects />
-        <Timeline />
-        <Contact />
-      </main>
+              <Hero />
+              <AboutSkills />
+              <Projects />
+              <Timeline />
+              <Contact />
+            </main>
 
-      <Footer />
+            <Footer />
           </motion.div>
         )}
       </AnimatePresence>
