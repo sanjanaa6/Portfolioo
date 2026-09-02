@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Sparkles, Github, ExternalLink, ArrowUpRight, Zap, FolderGit2 } from 'lucide-react';
+import { Sparkles, ArrowUpRight, Zap, FolderGit2 } from 'lucide-react';
 import { PROJECTS_DATA, Project } from '../data/portfolioData';
 import { ProjectModal } from './ProjectModal';
 
 export const Projects: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'llm' | 'vision' | 'ml' | 'web'>('all');
+  const [filter, setFilter] = useState<'all' | 'web' | 'product' | 'brand' | 'mobile'>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const filteredProjects = PROJECTS_DATA.filter((proj) => {
@@ -13,39 +13,36 @@ export const Projects: React.FC = () => {
   });
 
   return (
-    <section id="projects" className="py-20 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-mono">
-            <FolderGit2 className="w-3.5 h-3.5" />
-            <span>PORTFOLIO SHOWCASE</span>
+    <section id="projects" className="relative z-10 py-20 md:py-24">
+      <div className="section-shell">
+        <div className="mx-auto mb-14 max-w-3xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.22em] text-sky-200">
+            <FolderGit2 className="h-3.5 w-3.5" />
+            <span>Selected work</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Featured <span className="text-gradient">AI & Machine Learning</span> Projects
+          <h2 className="mt-6 text-3xl font-black tracking-[-0.05em] text-white sm:text-4xl">
+            Recent <span className="text-gradient">product and brand</span> work.
           </h2>
-          <p className="text-slate-300 text-base">
-            Explore production-grade LLM applications, Computer Vision models, and full-stack software.
+          <p className="mt-4 text-base text-slate-300">
+            A snapshot of strategy, design, and frontend work built to help teams communicate clearly and grow faster.
           </p>
         </div>
 
-        {/* Filter Category Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="mb-12 flex flex-wrap items-center justify-center gap-2">
           {[
-            { label: 'All Projects', value: 'all' },
-            { label: 'LLMs & RAG', value: 'llm' },
-            { label: 'Computer Vision', value: 'vision' },
-            { label: 'Machine Learning', value: 'ml' },
-            { label: 'Full-Stack Web', value: 'web' },
+            { label: 'All', value: 'all' },
+            { label: 'Web', value: 'web' },
+            { label: 'Product', value: 'product' },
+            { label: 'Brand', value: 'brand' },
+            { label: 'Mobile', value: 'mobile' }
           ].map((cat) => (
             <button
               key={cat.value}
-              onClick={() => setFilter(cat.value as any)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 ${
+              onClick={() => setFilter(cat.value as 'all' | 'web' | 'product' | 'brand' | 'mobile')}
+              className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition-all ${
                 filter === cat.value
-                  ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/20'
-                  : 'glass-card text-slate-300 hover:text-white hover:border-slate-700'
+                  ? 'bg-gradient-to-r from-sky-400 to-violet-500 text-slate-950'
+                  : 'border border-white/10 bg-white/5 text-slate-300 hover:border-slate-600 hover:text-white'
               }`}
             >
               {cat.label}
@@ -53,72 +50,62 @@ export const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Projects Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className="glass-card glass-card-hover rounded-2xl p-6 flex flex-col justify-between cursor-pointer border border-sky-500/15 group relative"
+              className="glass-card glass-card-hover group relative flex cursor-pointer flex-col justify-between rounded-[28px] border border-white/10 p-6"
             >
-              {/* Card Top Row */}
               <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="px-2.5 py-1 rounded-md bg-sky-500/10 border border-sky-500/30 text-sky-300 font-mono text-[11px] uppercase tracking-wider">
+                <div className="mb-4 flex items-center justify-between gap-2">
+                  <span className="rounded-full border border-sky-400/30 bg-sky-500/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.2em] text-sky-200">
                     {project.category}
                   </span>
                   {project.featured && (
-                    <span className="flex items-center gap-1 text-[11px] font-mono text-amber-300 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded-full">
-                      <Sparkles className="w-3 h-3" /> Featured
+                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-1 text-[10px] uppercase tracking-[0.16em] text-amber-200">
+                      <Sparkles className="h-3 w-3" />
+                      Featured
                     </span>
                   )}
                 </div>
 
-                <h3 className="text-xl font-bold text-white group-hover:text-sky-300 transition-colors flex items-center justify-between">
+                <h3 className="flex items-center justify-between gap-3 text-xl font-bold text-white">
                   <span>{project.title}</span>
-                  <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all text-sky-400" />
+                  <ArrowUpRight className="h-5 w-5 text-sky-300 opacity-0 transition-all group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:opacity-100" />
                 </h3>
 
-                <p className="text-xs text-slate-300 mt-3 line-clamp-3 leading-relaxed">
-                  {project.description}
-                </p>
+                <p className="mt-4 text-sm leading-7 text-slate-300">{project.description}</p>
               </div>
 
-              {/* Card Bottom Row: Metrics & Tech Tags */}
-              <div className="mt-6 pt-4 border-t border-slate-800/80 space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono text-amber-300 bg-slate-900/60 p-2 rounded-lg border border-slate-800">
-                  <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  <span className="truncate">{project.metrics}</span>
+              <div className="mt-6 space-y-4 border-t border-white/10 pt-4">
+                <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2 text-[11px] uppercase tracking-[0.18em] text-amber-200">
+                  <Zap className="h-3.5 w-3.5 text-amber-300" />
+                  <span>{project.metrics}</span>
                 </div>
 
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {project.tags.slice(0, 4).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 rounded bg-slate-900 text-[10px] font-mono text-slate-400 border border-slate-800"
+                      className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] uppercase tracking-[0.14em] text-slate-300"
                     >
                       {tag}
                     </span>
                   ))}
                   {project.tags.length > 4 && (
-                    <span className="px-1.5 py-0.5 rounded bg-slate-900 text-[10px] font-mono text-slate-500">
+                    <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[10px] uppercase tracking-[0.14em] text-slate-400">
                       +{project.tags.length - 4}
                     </span>
                   )}
                 </div>
               </div>
-
             </div>
           ))}
         </div>
-
       </div>
 
-      {/* Project Modal Detail View */}
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );
 };

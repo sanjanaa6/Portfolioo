@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'llm' | 'vision' | 'ml' | 'web';
+  category: 'web' | 'product' | 'brand' | 'mobile';
   description: string;
   detailedOverview: string;
   tags: string[];
@@ -28,207 +28,188 @@ export interface TimelineItem {
 }
 
 export const PERSONAL_INFO = {
-  name: "Sanjana Singh",
-  title: "Python AI Developer & Machine Learning Engineer",
+  name: 'Your Name',
+  title: 'Product Designer & Full-Stack Developer',
   roles: [
-    "Python AI Developer",
-    "LLM & RAG Systems Specialist",
-    "Machine Learning Engineer",
-    "Deep Learning & Computer Vision"
+    'Product Designer',
+    'Full-Stack Developer',
+    'Brand Storyteller',
+    'UI Systems Specialist'
   ],
-  location: "India",
-  email: "sanjanaasingh.05@gmail.com",
-  github: "https://github.com/sanjanaa6",
-  linkedin: "https://linkedin.com/in/sanjanaa6",
-  status: "Available for AI Engineering Roles & Collaborations",
-  summary: "Passionate Python AI Developer and Machine Learning Engineer specializing in building enterprise Retrieval-Augmented Generation (RAG) pipelines, Fine-Tuning LLMs, Computer Vision systems, and interactive AI applications. Experienced in PyTorch, TensorFlow, LangChain, LlamaIndex, and modern full-stack integrations.",
+  location: 'Remote / Worldwide',
+  email: 'hello@yourportfolio.com',
+  github: 'https://github.com',
+  linkedin: 'https://linkedin.com',
+  status: 'Available for product and digital design work',
+  summary: 'I design thoughtful digital experiences and build polished products that combine strategy, usability, and clean engineering. My work sits at the intersection of brand, product design, and frontend craftsmanship.',
   stats: [
-    { label: "AI Models Deployed", value: "15+" },
-    { label: "Code Accuracy", value: "98.4%" },
-    { label: "RAG Latency Reduction", value: "65%" },
-    { label: "Open Source Projects", value: "10+" }
+    { label: 'Projects launched', value: '42+' },
+    { label: 'Client satisfaction', value: '96%' },
+    { label: 'Avg. delivery speed', value: '2-4 wks' },
+    { label: 'Years building', value: '6+' }
   ]
 };
 
 export const SKILLS_DATA: SkillCategory[] = [
   {
-    title: "AI & Machine Learning",
-    iconName: "BrainCircuit",
+    title: 'Design Strategy',
+    iconName: 'BrainCircuit',
     skills: [
-      { name: "Python", level: 95 },
-      { name: "PyTorch & TensorFlow", level: 90 },
-      { name: "Scikit-Learn", level: 92 },
-      { name: "Deep Learning (CNN/RNN/Transformers)", level: 88 },
-      { name: "Pandas & NumPy", level: 95 }
+      { name: 'UX Research', level: 92 },
+      { name: 'Wireframing & IA', level: 90 },
+      { name: 'Design Systems', level: 94 },
+      { name: 'Brand Direction', level: 88 },
+      { name: 'Prototyping', level: 96 }
     ]
   },
   {
-    title: "LLM & Generative AI",
-    iconName: "Sparkles",
+    title: 'Frontend Engineering',
+    iconName: 'Code',
     skills: [
-      { name: "LangChain & LlamaIndex", level: 92 },
-      { name: "RAG Architectures & Vector DBs (Chroma/FAISS/Pinecone)", level: 90 },
-      { name: "Prompt Engineering & Agentic Workflows", level: 94 },
-      { name: "Ollama & Local Model Deployment", level: 88 },
-      { name: "Hugging Face Transformers", level: 85 }
+      { name: 'React & TypeScript', level: 94 },
+      { name: 'Next.js', level: 90 },
+      { name: 'Tailwind CSS', level: 95 },
+      { name: 'Performance Optimization', level: 88 },
+      { name: 'Accessibility', level: 91 }
     ]
   },
   {
-    title: "Backend & Cloud API",
-    iconName: "Server",
+    title: 'Product Building',
+    iconName: 'Server',
     skills: [
-      { name: "FastAPI & Flask", level: 90 },
-      { name: "RESTful APIs & Async I/O", level: 92 },
-      { name: "Docker & Containerization", level: 82 },
-      { name: "Git / GitHub DevOps", level: 90 }
+      { name: 'Product Thinking', level: 92 },
+      { name: 'Roadmapping', level: 86 },
+      { name: 'API Integration', level: 90 },
+      { name: 'Testing & QA', level: 84 },
+      { name: 'Agile Delivery', level: 89 }
     ]
   },
   {
-    title: "Frontend & Visualization",
-    iconName: "Code",
+    title: 'Creative Execution',
+    iconName: 'Sparkles',
     skills: [
-      { name: "React 19 & TypeScript", level: 85 },
-      { name: "Tailwind CSS & Glassmorphism UI", level: 90 },
-      { name: "Streamlit & Gradio AI Dashboards", level: 95 },
-      { name: "Three.js / HTML Canvas Visuals", level: 78 }
+      { name: 'Landing Pages', level: 96 },
+      { name: 'Brand Experience', level: 90 },
+      { name: 'Content Systems', level: 82 },
+      { name: 'Visual Storytelling', level: 92 },
+      { name: 'Motion Direction', level: 79 }
     ]
   }
 ];
 
 export const PROJECTS_DATA: Project[] = [
   {
-    id: "rag-knowledge-engine",
-    title: "Enterprise Multi-Doc RAG Knowledge Engine",
-    category: "llm",
-    description: "High-throughput Retrieval-Augmented Generation system using LlamaIndex, ChromaDB, and local Llama 3 via Ollama for real-time document search.",
-    detailedOverview: "Engineered an enterprise-grade document intelligence system capable of parsing unstructured PDFs, markdown, and tabular data. Utilized hybrid semantic + keyword search with re-ranking to deliver grounded answers with zero hallucination.",
-    tags: ["Python", "LangChain", "LlamaIndex", "ChromaDB", "Ollama", "FastAPI"],
-    metrics: "Sub-400ms Query Latency | 96% Precision",
-    githubUrl: "https://github.com/sanjanaa6/Portfolioo",
-    liveUrl: "#",
+    id: 'atlas-portal',
+    title: 'Atlas Platform Redesign',
+    category: 'web',
+    description: 'A premium SaaS dashboard and knowledge portal for modern teams, built to simplify reporting and collaboration.',
+    detailedOverview: 'I redesigned the customer experience and product UI to improve clarity, trust, and adoption across a complex SaaS platform. The new system combined cleaner information architecture with a more confident visual language.',
+    tags: ['UX Strategy', 'React', 'Design System', 'Dashboard'],
+    metrics: '31% increase in activation',
+    githubUrl: 'https://github.com',
+    liveUrl: '#',
     featured: true,
     architectureHighlights: [
-      "Hybrid Vector + BM25 Sparse Search",
-      "Cross-Encoder Re-Ranking Pipeline",
-      "Strict Grounding Guardrails & Context Streaming"
+      'Information architecture overhaul',
+      'Reusable component design system',
+      'Conversion-focused onboarding flow'
     ]
   },
   {
-    id: "vision-defect-detection",
-    title: "YOLOv8 Real-Time Visual Inspection System",
-    category: "vision",
-    description: "Deep Learning computer vision model trained to detect manufacturing micro-defects at 60 FPS using custom PyTorch augmentation pipelines.",
-    detailedOverview: "Built a computer vision inspection tool tailored for automated quality control. Uses fine-tuned YOLOv8 weights with TensorRT quantization for deployment on edge hardware.",
-    tags: ["Python", "PyTorch", "OpenCV", "YOLOv8", "TensorRT", "Streamlit"],
-    metrics: "60 FPS Edge Processing | 98.2% mAP@50",
-    githubUrl: "https://github.com/sanjanaa6/Portfolioo",
-    liveUrl: "#",
+    id: 'mira-brand',
+    title: 'Mira Studio Branding',
+    category: 'brand',
+    description: 'A strategic rebrand and digital identity system for a creative studio entering a new growth phase.',
+    detailedOverview: 'This engagement included brand positioning, message clarity, visual system updates, and a launch-ready website that translated the studio’s personality into a premium digital experience.',
+    tags: ['Brand Identity', 'Web Design', 'Storytelling', 'Strategy'],
+    metrics: '3x increase in inquiries',
+    githubUrl: 'https://github.com',
+    liveUrl: '#',
     featured: true,
     architectureHighlights: [
-      "Custom Data Augmentation Pipeline",
-      "TensorRT INT8 Model Quantization",
-      "Real-time Video Stream Overlay Interface"
+      'Positioning and audience refinement',
+      'High-converting portfolio design',
+      'Tone and visual identity system'
     ]
   },
   {
-    id: "autonomous-ai-agent",
-    title: "Multi-Agent Code Reviewer & Security Scanner",
-    category: "llm",
-    description: "Agentic AI pipeline using LangGraph that orchestrates sub-agents to scan code repositories for security bugs, lints, and test coverage.",
-    detailedOverview: "Designed an autonomous multi-agent graph where specialized agents run static analysis, identify vulnerability vectors (OWASP Top 10), and draft pull request inline code recommendations.",
-    tags: ["Python", "LangGraph", "OpenAI API", "FastAPI", "Docker"],
-    metrics: "70% Faster PR Review Cycle",
-    githubUrl: "https://github.com/sanjanaa6/Portfolioo",
-    liveUrl: "#",
+    id: 'northstar-mobile',
+    title: 'Northstar Mobile App',
+    category: 'mobile',
+    description: 'A focused mobile product that helps professionals manage tasks, notes, and priorities without overwhelm.',
+    detailedOverview: 'The product was designed around clarity and habit building. We simplified the interface, made navigation more intuitive, and rebuilt key flows to reduce friction in daily use.',
+    tags: ['Mobile UX', 'Product Design', 'Research', 'Prototyping'],
+    metrics: '42% better task completion',
+    githubUrl: 'https://github.com',
+    liveUrl: '#',
     featured: true,
     architectureHighlights: [
-      "Stateful LangGraph Agent Workflow",
-      "Self-Correction & Verification Loops",
-      "Automated GitHub Webhook Integration"
+      'Usability-focused mobile flow design',
+      'Lean onboarding and retention loop',
+      'High-clarity data hierarchy'
     ]
   },
   {
-    id: "predictive-analytics-suite",
-    title: "Financial Time-Series Forecasting Engine",
-    category: "ml",
-    description: "Machine learning forecasting model utilizing XGBoost, LightGBM, and Prophet to predict market volatility and demand spikes.",
-    detailedOverview: "Developed an end-to-end ML pipeline with feature engineering for rolling averages, seasonality decomposition, and real-time drift detection to maintain model accuracy over time.",
-    tags: ["Python", "Scikit-Learn", "XGBoost", "Pandas", "Plotly", "FastAPI"],
-    metrics: "94.1% Accuracy | Automated Drift Detection",
-    githubUrl: "https://github.com/sanjanaa6/Portfolioo",
-    liveUrl: "#",
+    id: 'solace-product',
+    title: 'Solace Product Suite',
+    category: 'product',
+    description: 'A set of product experiences built to unify customer operations, analytics, and client communication.',
+    detailedOverview: 'The project focused on reducing complexity in a fragmented customer experience. I mapped the journey, refined the information hierarchy, and developed a consistent product interface that scaled across multiple surfaces.',
+    tags: ['UX Design', 'Frontend', 'Systems', 'Product'],
+    metrics: '2.1x faster weekly reporting',
+    githubUrl: 'https://github.com',
+    liveUrl: '#',
     featured: false,
     architectureHighlights: [
-      "Automated Feature Engineering Pipeline",
-      "Evidently AI Model Drift Monitoring",
-      "Interactive Plotly Analytics Dashboard"
-    ]
-  },
-  {
-    id: "ai-portfolio-react",
-    title: "Futuristic Glassmorphism AI Portfolio",
-    category: "web",
-    description: "Modern interactive developer portfolio built with React 19, TypeScript, Tailwind CSS, custom canvas graphics, and embedded AI Assistant.",
-    detailedOverview: "Designed and built this full-stack portfolio experience featuring particle physics background, fast client-side chatbot, dark mode UI, and responsive modal interactions.",
-    tags: ["React 19", "TypeScript", "Tailwind CSS", "Vite", "Canvas API"],
-    metrics: "100 Lighthouse Performance & A11y",
-    githubUrl: "https://github.com/sanjanaa6/Portfolioo",
-    liveUrl: "https://github.com/sanjanaa6/Portfolioo",
-    featured: true,
-    architectureHighlights: [
-      "Custom HTML5 Canvas Particle Neural Engine",
-      "Client-Side Knowledge Chatbot Widget",
-      "Tailwind Glassmorphism UI Components"
+      'Cross-functional product discovery',
+      'Scalable UI patterns and templates',
+      'Clear reporting and delivery flow'
     ]
   }
 ];
 
 export const TIMELINE_DATA: TimelineItem[] = [
   {
-    year: "2024 - Present",
-    title: "AI Developer & ML Engineer",
-    organization: "Independent & Open Source AI Projects",
-    description: "Architecting end-to-end LLM solutions, fine-tuning open-source models (Llama 3, Mistral), building multi-agent systems, and publishing computer vision tools.",
-    type: "experience",
-    badges: ["LangChain", "PyTorch", "RAG", "FastAPI", "React"]
+    year: '2022 - Present',
+    title: 'Senior Product Designer & Frontend Engineer',
+    organization: 'Independent Consulting & Product Work',
+    description: 'Leading product strategy, interface design, and front-end execution for startups and service businesses focused on better digital experiences.',
+    type: 'experience',
+    badges: ['UX', 'React', 'Strategy', 'Design Systems']
   },
   {
-    year: "2023 - 2024",
-    title: "Machine Learning & Deep Learning Certification",
-    organization: "Advanced AI Specialization",
-    description: "Mastered Deep Neural Networks, Convolutional Networks, Transformer Architectures, NLP, and MLOps deployment best practices.",
-    type: "certification",
-    badges: ["TensorFlow", "PyTorch", "Computer Vision", "NLP"]
+    year: '2019 - 2022',
+    title: 'Digital Product Designer',
+    organization: 'Creative & SaaS Teams',
+    description: 'Built clean, conversion-friendly digital products across marketing, product, and content experiences while collaborating tightly with engineering and growth teams.',
+    type: 'experience',
+    badges: ['Figma', 'Research', 'Product', 'Growth']
   },
   {
-    year: "2020 - 2024",
-    title: "Bachelor of Technology in Computer Science",
-    organization: "University",
-    description: "Specialized in Data Structures & Algorithms, Database Management Systems, Operating Systems, Artificial Intelligence, and Software Engineering.",
-    type: "education",
-    badges: ["B.Tech CS", "Python", "Data Structures", "DBMS"]
+    year: '2015 - 2019',
+    title: 'B.A. in Visual Communication & Interaction Design',
+    organization: 'Design University',
+    description: 'Focused on visual design, human-centered systems, and digital storytelling with a strong emphasis on interface clarity and audience experience.',
+    type: 'education',
+    badges: ['UI Design', 'UX', 'Branding', 'Interaction']
   }
 ];
 
 export const AI_KNOWLEDGE_BASE = [
   {
-    keywords: ["who", "about", "sanjana", "bio", "experience"],
-    answer: "Sanjana Singh is a Python AI Developer and Machine Learning Engineer specializing in LLMs, RAG systems, PyTorch/TensorFlow deep learning, and computer vision. She builds enterprise-grade AI solutions and scalable web integrations!"
+    keywords: ['who', 'about', 'name', 'bio'],
+    answer: 'This portfolio is built around a modern product-focused creative professional who blends design thinking with polished frontend engineering.'
   },
   {
-    keywords: ["skills", "tech", "stack", "python", "frameworks", "tools"],
-    answer: "Sanjana's main core stack includes:\n• Languages: Python (Expert), TypeScript, SQL, C++\n• AI/ML: PyTorch, TensorFlow, Scikit-Learn, OpenCV, Hugging Face\n• GenAI: LangChain, LlamaIndex, ChromaDB, FAISS, Ollama, Prompt Engineering\n• Backend & Web: FastAPI, Flask, React 19, Tailwind CSS, Docker, Git"
+    keywords: ['services', 'skills', 'stack', 'expertise'],
+    answer: 'Core skill areas include product design, UX strategy, frontend development, responsive design systems, branding, and digital experience design.'
   },
   {
-    keywords: ["projects", "rag", "vision", "agent", "portfolio"],
-    answer: "Sanjana has built several impressive AI systems:\n1. Enterprise Multi-Doc RAG Knowledge Engine (Sub-400ms latency)\n2. Real-Time YOLOv8 Visual Defect Detection System (60 FPS Edge)\n3. Autonomous Multi-Agent Code Reviewer (LangGraph)\n4. Futuristic Glassmorphism Portfolio (React 19 + TypeScript)"
+    keywords: ['projects', 'portfolio', 'work', 'case study'],
+    answer: 'Recent work spans SaaS redesigns, brand refreshes, mobile product experiences, and conversion-focused digital launches across multiple product categories.'
   },
   {
-    keywords: ["contact", "hire", "email", "reach", "social"],
-    answer: "You can reach Sanjana directly via:\n📧 Email: sanjanaasingh.05@gmail.com\n💻 GitHub: github.com/sanjanaa6\n💼 LinkedIn: linkedin.com/in/sanjanaa6\nShe is available for AI engineering roles, freelance contracts, and research collaborations!"
-  },
-  {
-    keywords: ["rag", "llm", "llama", "langchain", "ollama"],
-    answer: "Sanjana specializes in Retrieval-Augmented Generation (RAG)! She builds hybrid vector search + sparse keyword retrieval systems with cross-encoder re-ranking using LlamaIndex, LangChain, ChromaDB, and local models like Llama 3 via Ollama."
+    keywords: ['contact', 'hire', 'email', 'reach'],
+    answer: 'You can reach the studio by email at hello@yourportfolio.com and connect through the portfolio contact form.'
   }
 ];

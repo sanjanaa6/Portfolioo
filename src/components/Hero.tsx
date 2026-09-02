@@ -1,163 +1,141 @@
 import React, { useState, useEffect } from 'react';
-import { Bot, ArrowRight, Download, Terminal, Sparkles, Check, Copy, Code2, Cpu, Zap } from 'lucide-react';
+import { ArrowRight, Download, Sparkles, BriefcaseBusiness, Layers3 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
-interface HeroProps {
-  onOpenChat: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenChat }) => {
+export const Hero: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setRoleIndex((prev) => (prev + 1) % PERSONAL_INFO.roles.length);
-    }, 3000);
+    }, 2800);
     return () => clearInterval(interval);
   }, []);
 
-  const samplePythonCode = `# Enterprise RAG Pipeline Architecture
-from langchain_community.vectorstores import Chroma
-from llama_index.core import VectorStoreIndex
-
-class SanjanaAIRAG:
-    def __init__(self, model="llama3:latest"):
-        self.engine = VectorStoreIndex.from_documents(...)
-        self.latency_ms = 380
-        
-    def query(self, prompt: str) -> str:
-        return self.engine.query(prompt).response
-
-# Status: Operational (Precision: 96.4%)`;
-
-  const copyCode = () => {
-    navigator.clipboard.writeText(samplePythonCode);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
-    <section id="hero" className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column: Headline & Intro */}
+    <section id="hero" className="relative overflow-hidden pt-32 pb-20 md:pt-36 md:pb-24">
+      <div className="floating-orb h-64 w-64 bg-sky-400/20 left-8 top-20" />
+      <div className="floating-orb h-72 w-72 bg-violet-500/15 right-12 top-8" />
+
+      <div className="section-shell relative z-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
-            
-            {/* Availability Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-sky-500/30 text-xs font-mono text-sky-300 backdrop-blur-md shadow-inner">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-              </span>
-              <span>{PERSONAL_INFO.status}</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-sky-200">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
+              {PERSONAL_INFO.status}
             </div>
 
-            {/* Dynamic Headline */}
             <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                Architecting <br className="hidden sm:inline" />
-                <span className="text-gradient">Intelligent AI Solutions</span>
+              <h1 className="text-4xl font-black leading-[0.96] tracking-[-0.06em] text-white sm:text-5xl lg:text-7xl">
+                I design and build
+                <span className="mt-3 block text-gradient">digital experiences</span>
+                that feel premium.
               </h1>
 
-              <div className="h-8 sm:h-10 flex items-center justify-center lg:justify-start">
-                <span className="text-lg sm:text-xl font-mono text-sky-300 flex items-center gap-2">
-                  <Terminal className="w-5 h-5 text-purple-400" />
-                  <span className="font-semibold">{PERSONAL_INFO.roles[roleIndex]}</span>
+              <div className="flex h-10 items-center justify-center lg:justify-start">
+                <span className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-slate-200 shadow-lg shadow-slate-900/30">
+                  <span className="text-sky-300">{PERSONAL_INFO.roles[roleIndex]}</span>
                   <span className="animate-pulse text-sky-400">|</span>
                 </span>
               </div>
             </div>
 
-            {/* Subtitle summary */}
-            <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="mx-auto max-w-2xl text-base leading-8 text-slate-300 lg:mx-0 lg:text-lg">
               {PERSONAL_INFO.summary}
             </p>
 
-            {/* Primary CTAs */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2 lg:justify-start">
               <a
                 href="#projects"
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-semibold text-sm shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-indigo-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_18px_40px_rgba(56,189,248,0.28)] transition-transform hover:-translate-y-0.5"
               >
-                <span>View Projects</span>
+                <span>View my work</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
-              <button
-                onClick={onOpenChat}
-                className="px-6 py-3.5 rounded-xl glass-card text-sky-300 font-semibold text-sm hover:text-white hover:border-sky-400/50 hover:scale-105 transition-all duration-300 flex items-center gap-2 group"
-              >
-                <Bot className="w-4 h-4 text-purple-400 group-hover:rotate-12 transition-transform" />
-                <span>Ask Sanjana AI</span>
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              </button>
-
               <a
-                href={`mailto:${PERSONAL_INFO.email}?subject=Resume Request`}
-                className="px-5 py-3.5 rounded-xl border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-medium text-sm transition-colors flex items-center gap-2"
+                href={`mailto:${PERSONAL_INFO.email}?subject=Project Inquiry`}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:border-sky-400/40 hover:bg-sky-500/10"
               >
-                <Download className="w-4 h-4" />
-                <span>Resume</span>
+                <Download className="w-4 h-4 text-sky-300" />
+                <span>Download CV</span>
               </a>
             </div>
 
-            {/* Key Stat Cards */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
-              {PERSONAL_INFO.stats.map((stat, idx) => (
-                <div key={idx} className="glass-card p-3.5 rounded-xl text-center lg:text-left">
-                  <div className="text-xl sm:text-2xl font-bold text-gradient-cyan">{stat.value}</div>
-                  <div className="text-xs text-slate-400 font-medium">{stat.label}</div>
+            <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6 sm:grid-cols-4">
+              {PERSONAL_INFO.stats.map((stat) => (
+                <div key={stat.label} className="glass-card rounded-2xl p-4 text-left">
+                  <div className="text-2xl font-black text-white">{stat.value}</div>
+                  <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-slate-400">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right Column: Code Window Graphic */}
           <div className="lg:col-span-5">
-            <div className="glass-card rounded-2xl overflow-hidden border border-sky-500/20 shadow-2xl shadow-purple-900/20 group hover:border-sky-400/40 transition-colors">
-              {/* Terminal Window Header */}
-              <div className="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                  <span className="ml-2 text-xs font-mono text-slate-400 flex items-center gap-1.5">
-                    <Code2 className="w-3.5 h-3.5 text-sky-400" />
-                    Sanjana_RAG_Pipeline.py
+            <div className="glass-card relative overflow-hidden rounded-[28px] border border-white/10 p-5 shadow-[0_25px_60px_rgba(15,23,42,0.7)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 via-transparent to-violet-500/10" />
+              <div className="relative">
+                <div className="mb-5 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="h-3 w-3 rounded-full bg-rose-400" />
+                    <span className="h-3 w-3 rounded-full bg-amber-400" />
+                    <span className="h-3 w-3 rounded-full bg-emerald-400" />
+                  </div>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] uppercase tracking-[0.2em] text-slate-300">
+                    Portfolio
                   </span>
                 </div>
-                <button
-                  onClick={copyCode}
-                  className="text-slate-400 hover:text-white p-1 rounded transition-colors"
-                  title="Copy Python Code"
-                >
-                  {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
 
-              {/* Code Snippet Body */}
-              <div className="p-5 font-mono text-xs leading-relaxed text-slate-300 overflow-x-auto bg-[#080c19]/90">
-                <pre className="text-sky-300/90">
-                  <code>{samplePythonCode}</code>
-                </pre>
-              </div>
+                <div className="grid gap-4">
+                  <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
+                    <div className="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[0.22em] text-slate-400">
+                      <span>Selected focus</span>
+                      <Sparkles className="h-3.5 w-3.5 text-amber-300" />
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3">
+                        <div>
+                          <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Brand</div>
+                          <div className="mt-1 text-base font-semibold text-white">Positioning & identity</div>
+                        </div>
+                        <div className="rounded-xl bg-sky-500/10 p-2 text-sky-300">
+                          <Layers3 className="h-5 w-5" />
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 p-3">
+                        <div>
+                          <div className="text-xs uppercase tracking-[0.2em] text-slate-400">Product</div>
+                          <div className="mt-1 text-base font-semibold text-white">UX systems & websites</div>
+                        </div>
+                        <div className="rounded-xl bg-violet-500/10 p-2 text-violet-300">
+                          <BriefcaseBusiness className="h-5 w-5" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-              {/* Terminal Bottom Status Bar */}
-              <div className="bg-slate-900/80 px-4 py-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span className="flex items-center gap-1.5 text-emerald-400">
-                  <Cpu className="w-3.5 h-3.5 animate-pulse" />
-                  GPU: RTX 4090 Active
-                </span>
-                <span className="flex items-center gap-1 text-sky-400">
-                  <Zap className="w-3.5 h-3.5" />
-                  Latency: 380ms
-                </span>
+                  <div className="rounded-2xl border border-sky-400/20 bg-gradient-to-r from-sky-500/10 to-violet-500/10 p-4">
+                    <div className="text-[11px] uppercase tracking-[0.22em] text-slate-400">Approach</div>
+                    <div className="mt-3 grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3">
+                        <div className="text-lg font-bold text-white">01</div>
+                        <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-slate-400">Research</div>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3">
+                        <div className="text-lg font-bold text-white">02</div>
+                        <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-slate-400">Design</div>
+                      </div>
+                      <div className="rounded-xl border border-white/10 bg-slate-950/60 p-3">
+                        <div className="text-lg font-bold text-white">03</div>
+                        <div className="mt-2 text-[11px] uppercase tracking-[0.18em] text-slate-400">Build</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

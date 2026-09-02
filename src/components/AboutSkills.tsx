@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrainCircuit, Sparkles, Server, Code, Layers, Cpu, Database, ShieldCheck } from 'lucide-react';
-import { SKILLS_DATA, PERSONAL_INFO } from '../data/portfolioData';
+import { SKILLS_DATA } from '../data/portfolioData';
 
 export const AboutSkills: React.FC = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -8,7 +8,7 @@ export const AboutSkills: React.FC = () => {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case 'BrainCircuit': return <BrainCircuit className="w-5 h-5 text-sky-400" />;
-      case 'Sparkles': return <Sparkles className="w-5 h-5 text-purple-400" />;
+      case 'Sparkles': return <Sparkles className="w-5 h-5 text-violet-400" />;
       case 'Server': return <Server className="w-5 h-5 text-emerald-400" />;
       case 'Code': return <Code className="w-5 h-5 text-pink-400" />;
       default: return <Layers className="w-5 h-5 text-sky-400" />;
@@ -16,69 +16,63 @@ export const AboutSkills: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-mono">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>CORE COMPETENCIES & STACK</span>
+    <section id="about" className="relative z-10 py-20 md:py-24">
+      <div className="section-shell">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1.5 text-[11px] uppercase tracking-[0.22em] text-violet-200">
+            <Cpu className="h-3.5 w-3.5" />
+            <span>About & capabilities</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Engineering <span className="text-gradient">Artificial Intelligence</span>
+          <h2 className="mt-6 text-3xl font-black tracking-[-0.05em] text-white sm:text-4xl">
+            Thoughtful design meets <span className="text-gradient">strong product execution.</span>
           </h2>
-          <p className="text-slate-300 text-base">
-            Bridging complex machine learning research with robust, scalable software products.
+          <p className="mt-4 text-base text-slate-300">
+            I work across strategy, interface design, and frontend implementation to turn messy ideas into premium digital experiences.
           </p>
         </div>
 
-        {/* Highlight Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="glass-card glass-card-hover p-6 rounded-2xl border border-sky-500/20">
-            <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center mb-4">
-              <BrainCircuit className="w-6 h-6 text-sky-400" />
+        <div className="mb-16 grid gap-6 md:grid-cols-3">
+          <div className="glass-card glass-card-hover rounded-3xl border border-sky-500/15 p-6">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-400/30 bg-sky-500/10">
+              <BrainCircuit className="h-6 w-6 text-sky-300" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">RAG & Local LLM Systems</h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Designing context-grounded retrieval architectures using LlamaIndex, LangChain, ChromaDB, and local models (Ollama/Llama 3) for zero-hallucination document intelligence.
+            <h3 className="mb-2 text-lg font-bold text-white">UX strategy</h3>
+            <p className="text-sm leading-7 text-slate-300">
+              Research-led decisions, clear flows, and product thinking that prioritizes user trust and outcomes.
             </p>
           </div>
 
-          <div className="glass-card glass-card-hover p-6 rounded-2xl border border-purple-500/20">
-            <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center mb-4">
-              <Cpu className="w-6 h-6 text-purple-400" />
+          <div className="glass-card glass-card-hover rounded-3xl border border-violet-500/15 p-6">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-violet-400/30 bg-violet-500/10">
+              <Layers className="h-6 w-6 text-violet-300" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Deep Learning & Vision</h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Training and fine-tuning PyTorch/TensorFlow models for computer vision, object detection (YOLOv8), image classification, and custom feature extraction pipelines.
+            <h3 className="mb-2 text-lg font-bold text-white">Design systems</h3>
+            <p className="text-sm leading-7 text-slate-300">
+              Consistent components and scalable patterns that keep experiences cohesive as products grow.
             </p>
           </div>
 
-          <div className="glass-card glass-card-hover p-6 rounded-2xl border border-emerald-500/20">
-            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mb-4">
-              <Database className="w-6 h-6 text-emerald-400" />
+          <div className="glass-card glass-card-hover rounded-3xl border border-emerald-500/15 p-6">
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-400/30 bg-emerald-500/10">
+              <Database className="h-6 w-6 text-emerald-300" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Python API & Web Integration</h3>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Developing high-throughput REST API backend services with FastAPI/Flask and pairing them with sleek React, TypeScript, and interactive Tailwind CSS frontends.
+            <h3 className="mb-2 text-lg font-bold text-white">Frontend craft</h3>
+            <p className="text-sm leading-7 text-slate-300">
+              Responsive, accessible interfaces built with care — polished enough for launch and flexible enough to evolve.
             </p>
           </div>
         </div>
 
-        {/* Interactive Skills Breakdown Container */}
-        <div className="glass-card p-6 sm:p-8 rounded-2xl border border-slate-800">
-          
-          {/* Category Tabs Header */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-8 border-b border-slate-800 pb-4">
+        <div className="glass-card rounded-[28px] border border-white/10 p-6 sm:p-8">
+          <div className="mb-8 flex flex-wrap items-center justify-center gap-3 border-b border-white/10 pb-5">
             {SKILLS_DATA.map((cat, idx) => (
               <button
                 key={cat.title}
                 onClick={() => setActiveTab(idx)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 ${
                   activeTab === idx
-                    ? 'bg-sky-500/20 border border-sky-400 text-sky-300 shadow-lg shadow-sky-500/10'
-                    : 'bg-slate-900/60 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'
+                    ? 'border border-sky-400/40 bg-sky-500/10 text-sky-200'
+                    : 'border border-white/10 bg-white/5 text-slate-300 hover:border-slate-600 hover:text-white'
                 }`}
               >
                 {getIcon(cat.iconName)}
@@ -87,30 +81,26 @@ export const AboutSkills: React.FC = () => {
             ))}
           </div>
 
-          {/* Active Skills List */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {SKILLS_DATA[activeTab].skills.map((skill) => (
               <div key={skill.name} className="space-y-2">
-                <div className="flex justify-between items-center text-sm font-medium text-slate-200">
+                <div className="flex items-center justify-between text-sm font-medium text-slate-200">
                   <span className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-sky-400" />
+                    <ShieldCheck className="h-4 w-4 text-sky-300" />
                     {skill.name}
                   </span>
-                  <span className="font-mono text-xs text-sky-400 font-bold">{skill.level}%</span>
+                  <span className="font-mono text-xs text-sky-300">{skill.level}%</span>
                 </div>
-                {/* Meter Bar */}
-                <div className="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800">
+                <div className="h-2.5 w-full overflow-hidden rounded-full border border-white/10 bg-slate-950/80">
                   <div
-                    className="h-full bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 rounded-full transition-all duration-1000 ease-out"
+                    className="h-full rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-violet-500 transition-all duration-700 ease-out"
                     style={{ width: `${skill.level}%` }}
                   />
                 </div>
               </div>
             ))}
           </div>
-
         </div>
-
       </div>
     </section>
   );
