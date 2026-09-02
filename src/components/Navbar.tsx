@@ -28,15 +28,13 @@ export const Navbar: React.FC = () => {
     >
       <div className="section-shell">
         <div className="flex items-center justify-between">
-          <a href="#hero" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-orange-500 text-stone-950 flex items-center justify-center font-bold shadow-lg shadow-orange-900/20 group-hover:scale-105 transition-transform duration-300">
-              <span className="text-xl">⚡</span>
+          <a href="#hero" className="flex items-center gap-3 group pl-2">
+            <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-orange-900/20 group-hover:scale-105 transition-transform duration-300">
+              <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <div>
-              <span className="block text-lg font-black tracking-widest text-white uppercase">
-                {PERSONAL_INFO.name.split(' ')[0]} <span className="text-orange-500">{PERSONAL_INFO.name.split(' ')[1] || ''}</span>
-              </span>
-            </div>
+            <span className="text-lg font-black tracking-widest text-white uppercase transition-colors group-hover:text-orange-400">
+              {PERSONAL_INFO.name.split(' ')[0]} <span className="text-orange-500">{PERSONAL_INFO.name.split(' ')[1] || ''}</span>
+            </span>
           </a>
 
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
@@ -65,7 +63,7 @@ export const Navbar: React.FC = () => {
               href={`mailto:${PERSONAL_INFO.email}`}
               className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-stone-950 hover:bg-orange-400 transition-colors"
             >
-              <span>Let's Talk</span>
+              <span>Let's Connect</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
