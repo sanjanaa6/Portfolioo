@@ -18,10 +18,10 @@ export const Hero: React.FC = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15rem] font-black text-white/[0.02] tracking-tighter uppercase whitespace-nowrap pointer-events-none select-none z-0">
         {PERSONAL_INFO.name.split(' ')[0]}
       </div>
-      
+
       <div className="section-shell relative z-10">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 items-center">
-          
+
           {/* Left Column */}
           <div className="space-y-8 text-center lg:text-left z-10">
             <div className="inline-flex items-center gap-2 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-orange-400 shadow-lg shadow-orange-900/20">
@@ -90,28 +90,28 @@ export const Hero: React.FC = () => {
           <div className="relative mx-auto w-full max-w-[420px] lg:max-w-none flex items-center justify-center h-[500px] z-10">
             {/* Background Glow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.15)_0,transparent_60%)] -z-10" />
-            
+
             {/* Image Card */}
             <div className="relative rounded-[2.5rem] bg-stone-900 border border-white/10 p-2 shadow-2xl w-full max-w-[400px]">
-              <img 
-                src="/portrait_sunset.jpg" 
-                alt="Portrait" 
+              <img
+                src="/portrait_sunset.jpg"
+                alt="Portrait"
                 className="w-full aspect-[4/5] object-cover rounded-[2.25rem] brightness-110 contrast-125 saturate-150"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1618077360395-f3068be8e001?q=80&w=1000&auto=format&fit=crop';
                 }}
               />
-              
+
               {/* Floating Stat 1 */}
               <div className="absolute -top-4 -left-6 rounded-2xl border border-white/10 bg-stone-900/80 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 animate-float">
                 <div className="text-orange-500 font-black text-xl">{PERSONAL_INFO.stats[1].value}</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 leading-tight">Client<br/>Satisfaction</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 leading-tight">Client<br />Satisfaction</div>
               </div>
 
               {/* Floating Stat 2 */}
               <div className="absolute top-12 -right-8 rounded-2xl border border-white/10 bg-stone-900/80 backdrop-blur-md p-3 shadow-xl flex items-center gap-3 animate-float" style={{ animationDelay: '1.5s' }}>
                 <div className="text-orange-500 font-black text-xl">{PERSONAL_INFO.stats[0].value}</div>
-                <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 leading-tight">Projects<br/>Launched</div>
+                <div className="text-[9px] font-bold uppercase tracking-widest text-stone-400 leading-tight">Projects<br />Launched</div>
               </div>
 
               {/* Bottom Info Overlay */}
@@ -125,12 +125,12 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Tech Decoration */}
             <div className="absolute bottom-0 right-10 flex flex-col items-center gap-2 opacity-50">
-               <div className="w-[1px] h-12 bg-gradient-to-t from-transparent to-orange-500/50"></div>
-               <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
-               <div className="text-[8px] uppercase tracking-[0.3em] text-orange-400 mt-2 rotate-90 origin-left ml-6 whitespace-nowrap">Scroll</div>
+              <div className="w-[1px] h-12 bg-gradient-to-t from-transparent to-orange-500/50"></div>
+              <div className="w-1.5 h-1.5 rounded-full bg-orange-500"></div>
+              <div className="text-[8px] uppercase tracking-[0.3em] text-orange-400 mt-2 rotate-90 origin-left ml-6 whitespace-nowrap">Scroll</div>
             </div>
           </div>
         </div>

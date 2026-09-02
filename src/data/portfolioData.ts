@@ -28,7 +28,7 @@ export interface TimelineItem {
 }
 
 export const PERSONAL_INFO = {
-  name: 'Your Name',
+  name: 'Sanjana Singh',
   title: 'Product Designer & Full-Stack Developer',
   roles: [
     'Product Designer',
