@@ -30,65 +30,54 @@ export const Navbar: React.FC = () => {
       <div className="section-shell">
         <div className="flex items-center justify-between">
           <a href="#hero" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-center shadow-lg shadow-sky-900/20 group-hover:scale-105 transition-transform duration-300">
-              <span className="text-base font-black tracking-[0.18em] text-sky-300">YN</span>
+            <div className="w-10 h-10 rounded-xl bg-orange-500 text-stone-950 flex items-center justify-center font-bold shadow-lg shadow-orange-900/20 group-hover:scale-105 transition-transform duration-300">
+              <span className="text-xl">⚡</span>
             </div>
             <div>
-              <span className="block text-lg font-bold tracking-[0.12em] text-white uppercase">{PERSONAL_INFO.name.split(' ')[0]}</span>
-              <span className="block text-[10px] uppercase tracking-[0.28em] text-slate-400">Design • Build</span>
+              <span className="block text-lg font-black tracking-widest text-white uppercase">
+                {PERSONAL_INFO.name.split(' ')[0]} <span className="text-orange-500">{PERSONAL_INFO.name.split(' ')[1] || ''}</span>
+              </span>
             </div>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-white transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-sky-400 hover:after:w-full after:transition-all"
+                className="text-xs font-bold tracking-[0.2em] uppercase text-stone-400 hover:text-orange-400 transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-orange-500 hover:after:w-full after:transition-all"
               >
                 {link.name}
               </a>
             ))}
           </nav>
 
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-4">
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-colors"
-              aria-label="GitHub"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white hover:border-orange-500/40 transition-colors"
             >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href={PERSONAL_INFO.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="p-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
+              <Github className="w-4 h-4 text-orange-400" />
+              <span>Resume</span>
             </a>
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-sky-500/10 px-4 py-2 text-sm font-medium text-sky-200 hover:bg-sky-500/20 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-stone-950 hover:bg-orange-400 transition-colors"
             >
-              <span>Book a call</span>
+              <span>Let's Talk</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>
 
           <div className="md:hidden flex items-center gap-3">
-            <a href={`mailto:${PERSONAL_INFO.email}`} className="p-2.5 rounded-xl border border-sky-400/30 bg-sky-500/10 text-sky-300" aria-label="Email">
-              <Mail className="w-4 h-4" />
-            </a>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl text-slate-300 hover:text-white focus:outline-none"
+              className="p-2.5 rounded-xl border border-white/10 bg-white/5 text-stone-300 hover:text-white focus:outline-none"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
